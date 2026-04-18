@@ -6,7 +6,7 @@
 
 **Automate the "last mile" of development: showcasing your work to the world.**
 
-This skill identifies key UI components, captures them automatically using Playwright, and generates professional documentation, galleries, and feature summaries for your projects.
+This Gemini CLI skill identifies key UI components, captures them automatically using Playwright, and generates professional documentation, galleries, and feature summaries for your projects.
 
 ---
 
@@ -21,11 +21,11 @@ Building a project is 90% of the work, but showing it to the world is the other 
 
 ## 🎬 Automated UI Capture
 
-The skill uses a generalized Playwright script to capture high-resolution screenshots of your application. It can handle hydration waits and complex UI interactions.
+The skill uses a generalized Playwright script to capture high-resolution screenshots of your application. It handles hydration waits, responsive design, and complex UI interactions.
 
 ### 🤖 High-Res Landing Capture
-> Automatically generated landing page screenshot for a Streamlit application.
-![Streamlit Landing](showcase/landing.png)
+> Automatically generated landing page screenshot for a modern web application.
+![Showcase Landing](showcase/landing.png)
 
 ---
 
@@ -35,6 +35,16 @@ The skill uses a generalized Playwright script to capture high-resolution screen
 2.  **Automated Capture**: Generates and executes a Playwright script for UI capture.
 3.  **README Documentation**: Builds a professional README using high-converting templates.
 4.  **Social Media Summary**: Distills the project into value propositions for LinkedIn or Twitter.
+
+---
+
+## 📦 Installation
+
+Install this skill directly into your Gemini CLI without cloning the entire repository:
+
+```bash
+gemini install skill ayushxx7/project-showcase-skill
+```
 
 ---
 
@@ -48,7 +58,7 @@ The skill uses a generalized Playwright script to capture high-resolution screen
 ## ⚡ Quick Start
 
 ```bash
-# 1. Install dependencies
+# 1. Install dependencies (if running manually)
 uv pip install playwright
 uv run playwright install chromium
 
@@ -63,6 +73,15 @@ uv run python scripts/capture.py --url http://localhost:8501 --dir showcase/
 -   **Python**: Core automation and scripting.
 -   **Playwright**: Headless browser automation for high-res captures.
 -   **Gemini CLI**: The intelligent agent platform that orchestrates the skill.
+
+---
+
+## 🔮 Roadmap (Phase 2)
+
+While the initial focus is on UI-driven applications, we are expanding to support:
+-   **Terminal Captures**: Automated SVG/GIF generation for CLI tools (using tools like `vhs`).
+-   **Backend Visualizer**: Diagram generation and API flow captures for headless services.
+-   **Interactive Demos**: Automated generation of interactive HTML/JS walk-throughs.
 
 ---
 
