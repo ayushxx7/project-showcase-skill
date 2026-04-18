@@ -1,15 +1,21 @@
 # ✨ Project Showcase Skill ✨ 🎬🤖
 
-[![Gemini CLI Skill](https://img.shields.io/badge/Gemini%20CLI-Skill-blue?style=for-the-badge)](https://github.com/google/gemini-cli)
-[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
-[![Playwright](https://img.shields.io/badge/Playwright-45ba4b?style=for-the-badge&logo=Playwright&logoColor=white)](https://playwright.dev/)
+[![Agent Skill](https://img.shields.io/badge/Agent-Skill-blue?style=for-the-badge)](https://skills.sh)
+[![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-Compatible-orange?style=for-the-badge)](https://github.com/google/gemini-cli)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-6b4fbb?style=for-the-badge)](https://github.com/anthropic/claude-code)
 
 > **Automate the "last mile" of development: showcasing your work to the world.**
 
-### 📦 Quick Install
+### 📦 Universal Install (Gemini, Claude, Cursor)
 ```bash
-gemini install skill ayushxx7/project-showcase-skill
+# Recommended: One-liner for all agent platforms
+curl -sSL https://raw.githubusercontent.com/ayushxx7/project-showcase-skill/main/skills.sh | bash
 ```
+
+**OR Install via native CLI:**
+*   **Gemini CLI**: `gemini install skill ayushxx7/project-showcase-skill`
+*   **Claude Code**: `claude install-skill ayushxx7/project-showcase-skill`
+*   **NPX**: `npx skills install project-showcase` (via skills.sh registry)
 
 ---
 
@@ -43,10 +49,11 @@ The skill uses a generalized Playwright script to capture high-resolution screen
 
 ## 🔍 Discoverability
 
-This repository is built as a native **Gemini CLI Skill**. It is discoverable by:
--   **Gemini CLI**: Automatically identifies the skill via the `SKILL.md` file.
--   **Skill Finders**: Searchable via GitHub topics: `gemini-cli-skill`, `project-showcase`, `automation`.
--   **Manual Search**: Users looking for "project showcase" or "automated screenshots" for Gemini CLI.
+This repository follows the **Open Agent Skills** standard. It is compatible with:
+-   **Gemini CLI**: Native support via `SKILL.MD`.
+-   **Claude Code**: Install via `claude install-skill`.
+-   **[skills.sh](https://skills.sh)**: Searchable in the global agent skill registry.
+-   **Skill Finders**: Indexed via GitHub topics: `agent-skill`, `gemini-cli-skill`, `claude-code-skill`.
 
 ---
 
@@ -76,7 +83,7 @@ uv run python scripts/capture.py --url http://localhost:8501 --dir showcase/
 
 -   **Python**: Core automation and scripting.
 -   **Playwright**: Headless browser automation for high-res captures.
--   **Gemini CLI**: The intelligent agent platform that orchestrates the skill.
+-   **Gemini CLI / Claude Code**: The intelligent agent platforms that orchestrate the skill.
 
 ---
 
