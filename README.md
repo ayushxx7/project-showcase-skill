@@ -1,12 +1,15 @@
 # ✨ Project Showcase Skill ✨ 🎬🤖
 
+[![Gemini CLI Skill](https://img.shields.io/badge/Gemini%20CLI-Skill-blue?style=for-the-badge)](https://github.com/google/gemini-cli)
 [![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
 [![Playwright](https://img.shields.io/badge/Playwright-45ba4b?style=for-the-badge&logo=Playwright&logoColor=white)](https://playwright.dev/)
-[![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-blue?style=for-the-badge)](https://github.com/google/gemini-cli)
 
-**Automate the "last mile" of development: showcasing your work to the world.**
+> **Automate the "last mile" of development: showcasing your work to the world.**
 
-This Gemini CLI skill identifies key UI components, captures them automatically using Playwright, and generates professional documentation, galleries, and feature summaries for your projects.
+### 📦 Quick Install
+```bash
+gemini install skill ayushxx7/project-showcase-skill
+```
 
 ---
 
@@ -38,13 +41,12 @@ The skill uses a generalized Playwright script to capture high-resolution screen
 
 ---
 
-## 📦 Installation
+## 🔍 Discoverability
 
-Install this skill directly into your Gemini CLI without cloning the entire repository:
-
-```bash
-gemini install skill ayushxx7/project-showcase-skill
-```
+This repository is built as a native **Gemini CLI Skill**. It is discoverable by:
+-   **Gemini CLI**: Automatically identifies the skill via the `SKILL.md` file.
+-   **Skill Finders**: Searchable via GitHub topics: `gemini-cli-skill`, `project-showcase`, `automation`.
+-   **Manual Search**: Users looking for "project showcase" or "automated screenshots" for Gemini CLI.
 
 ---
 
@@ -55,10 +57,12 @@ gemini install skill ayushxx7/project-showcase-skill
 
 ---
 
-## ⚡ Quick Start
+## ⚡ Manual Setup (Development)
+
+If you wish to run the scripts directly or contribute:
 
 ```bash
-# 1. Install dependencies (if running manually)
+# 1. Install dependencies
 uv pip install playwright
 uv run playwright install chromium
 
