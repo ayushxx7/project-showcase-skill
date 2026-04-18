@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# We want to keep showcase images in the repo for the README.
+# showcase/
