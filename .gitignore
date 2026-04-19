@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 # We want to keep showcase images in the repo for the README.
 # showcase/
+showcase/*.png\nshowcase/*.gif\nshowcase/*.webm\nshowcase/videos/

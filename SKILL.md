@@ -7,6 +7,11 @@ description: "Automate the creation of high-quality project showcases, including
 
 This skill automates the "last mile" of development: showcasing your work to the world. It identifies key UI components, captures them automatically, and generates professional documentation.
 
+## Prerequisites
+- **Web Recording**: `playwright` (Python/JS). Run `playwright install chromium`.
+- **Terminal Recording (macOS/Linux)**: [VHS](https://github.com/charmbracelet/vhs). Install via `brew install vhs`. 
+    - *Note*: Terminal recording is currently optimized for Unix-like environments.
+
 ## Core Workflows
 
 ### 1. Initial Analysis
@@ -14,19 +19,23 @@ This skill automates the "last mile" of development: showcasing your work to the
 - **Triggers**: "Set up a showcase for this project", "Analyze my UI for screenshots".
 - **Action**: Look for configuration files (e.g., `.streamlit/config.toml`, `package.json`, `app.py`) to determine the web server type and default ports.
 
-### 2. Automated Capture (`scripts/capture.py`)
-- **Goal**: Generate and execute a Playwright script to capture the UI.
-- **Triggers**: "Take screenshots of my app", "Capture the UI for the showcase".
-- **Action**: Create or update a `capture_ui.py` script. It should:
-    - Launch a browser (headless or headed).
-    - Navigate to local or remote URLs.
-    - Interact with key elements (fill inputs, click buttons).
-    - Save high-res screenshots to the `showcase/` folder.
+### 2. Automated Capture (`scripts/capture.py` & `scripts/record_cli.tape`)
+- **Goal**: Generate and execute scripts to capture the UI or Terminal.
+- **Triggers**: "Take screenshots of my app", "Capture the UI", "Record my CLI tool".
+- **Action**: 
+    - **Web**: Create or update a `capture_ui.py` script. **Execute it** to generate screenshots and videos.
+    - **CLI**: Create a `.tape` file for [VHS](https://github.com/charmbracelet/vhs). **Execute `vhs < your_file.tape`** to generate GIFs/MP4s.
+- **Verification & Auto-Fix (MANDATORY)**:
+    - After capture, **inspect the generated assets**. 
+    - **Failure Detection**: Look for 404 pages, blank screens, or `vhs` parser errors.
+    - **Auto-Fix**: If a failure is detected, diagnose the cause (e.g., port mismatch, server not started, hydration lag) and **retry once** with adjusted parameters (e.g., longer `wait_for_timeout`).
+    - **User Bridge**: If the second attempt fails or the "intended outcome" is ambiguous, ask the user: *"The capture shows [X], but is that what you wanted? Give me a quick prompt (e.g., 'go to /dashboard') to guide me."*
 
 ### 3. README Documentation
 - **Goal**: Build a professional README with a visual gallery.
 - **Triggers**: "Generate a README for this project", "Add a UI gallery to my README".
 - **Action**: Use the templates in `references/readme_templates.md` to structure:
+    - **UX Audit**: Ensure 'Live App' links are at the very top of the Hero section using the `for-the-badge` style with a call-to-action like 'Click Here to Explore'.
     - Hero section with high-level mission.
     - Feature breakdown with emojis.
     - **UI Gallery**: A responsive Markdown table displaying screenshots.

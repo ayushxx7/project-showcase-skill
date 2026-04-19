@@ -4,7 +4,7 @@ import os
 import time
 import argparse
 
-async def capture_showcase(url, output_dir, interactions=None):
+async def capture_showcase(url, output_dir, interactions=None, record_video=False):
     """
     Generalized Playwright capture script.
     
@@ -12,10 +12,17 @@ async def capture_showcase(url, output_dir, interactions=None):
         url: The root URL of the application.
         output_dir: Where to save screenshots.
         interactions: List of dicts with {action, selector, value, filename}
+        record_video: Whether to record a video of the capture.
     """
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page(viewport={'width': 1440, 'height': 900})
+        
+        context_args = {'viewport': {'width': 1440, 'height': 900}}
+        if record_video:
+            context_args['record_video_dir'] = os.path.join(output_dir, "videos/")
+            
+        context = await browser.new_context(**context_args)
+        page = await context.new_page()
         
         os.makedirs(output_dir, exist_ok=True)
         print(f"🎬 Starting UI Capture for {url}...")
@@ -23,6 +30,12 @@ async def capture_showcase(url, output_dir, interactions=None):
         try:
             await page.goto(url)
             await asyncio.sleep(5) # Base wait for hydration
+            
+            # Simple Verification: Check for 404 or page errors
+            title = await page.title()
+            if "404" in title or "Not Found" in title:
+                print(f"⚠️ Warning: Possible 404 detected ('{title}').")
+                # Suggesting a retry or different path to the agent
             
             if interactions:
                 for idx, interaction in enumerate(interactions):
@@ -51,12 +64,14 @@ async def capture_showcase(url, output_dir, interactions=None):
         except Exception as e:
             print(f"❌ Error during capture: {e}")
         finally:
+            await context.close()
             await browser.close()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://localhost:8501")
     parser.add_argument("--dir", default="showcase")
+    parser.add_argument("--record-video", action="store_true", help="Record video of the capture")
     args = parser.parse_args()
     
-    asyncio.run(capture_showcase(args.url, args.dir))
+    asyncio.run(capture_showcase(args.url, args.dir, record_video=args.record_video))

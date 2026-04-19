@@ -7,6 +7,8 @@ Use these structures to build high-quality project galleries and feature breakdo
 
 ### Structure:
 1. **Hero Header**: "✨ Project Name ✨ 🎬🤖"
+   - **Primary CTA**: Place a "Live App" badge at the very top for immediate engagement.
+   - Example: `[![Live App](https://img.shields.io/badge/Live_App-Click_Here_to_Explore-blue?style=for-the-badge&logo=vercel)](https://your-app-url.com)`
 2. **Elevator Pitch**: A 2-3 sentence overview of the core value.
 3. **Feature Set**: Grouped by category (e.g., 🤖 AI, 📈 Analytics, 🔍 Search).
 4. **UI Gallery**: A clean table with high-res screenshots.
@@ -21,7 +23,8 @@ Use these structures to build high-quality project galleries and feature breakdo
 ### Structure:
 1. **Logo & Installation**: Badges + `pip install`.
 2. **Why it Exists**: "The Problem vs. The Solution".
-3. **Interactive Demo**: ASCII art or an SVG screenshot of the CLI in action.
+3. **Interactive Demo**: ASCII art or a [VHS](https://github.com/charmbracelet/vhs) GIF recording.
+   - Example: `![CLI Demo](showcase/cli_demo.gif)`
 4. **Usage Examples**: Code blocks for the 3 most common workflows.
 5. **API Reference**: Link to docs or a summary of key methods.
 
