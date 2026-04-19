@@ -46,6 +46,7 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **Zero Effort**: Just tell the agent what commands to run; it generates the `.tape` and the GIF for you.
 
 ### 🛡️ Dev-First README Injection
+- **Smart License Verification**: Automatically detects missing licenses and proposes an MIT default to keep your project open-source compliant.
 - **Preserve & Merge**: It identifies your manual documentation and injects visual galleries around it.
 - **UX Audit**: Automatically places high-conversion "Live App" badges at the very top.
 - **Auto-Cleanup**: Generates the assets, updates the docs, and deletes the temporary scripts.
