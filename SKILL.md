@@ -87,11 +87,15 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **The Heal**: Only after user approval, apply the fixes surgically and re-audit to show the improved score.
 
 ### 5. Elevator Pitch & Social Media
-...
 - **Goal**: Summarize the project for external communication.
-- **Triggers**: "Write a LinkedIn post and an elevator pitch for this showcase.", "Write a LinkedIn post for this project", "Give me an elevator pitch".
+- **Triggers**: "Write a LinkedIn post and an elevator pitch for this showcase.", "Write a Reddit post for this project", "Give me an elevator pitch".
 - **Action**: Distill the project into 3 core value propositions, a "why it matters" statement, and a call to action.
+- **Formats**:
+    - **LinkedIn**: Professional, value-driven, and badge-focused.
+    - **Reddit**: Technical, developer-to-developer, and GIF-centric (targeting `r/webdev`, `r/programming`).
+    - **Elevator Pitch**: A 30-second high-impact verbal summary.
 
+## Bundled Resources
 ## Bundled Resources
 
 - **`scripts/capture.py`**: A generalized Playwright template that can be customized for different frameworks.

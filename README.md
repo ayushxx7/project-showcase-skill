@@ -32,7 +32,7 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **For Repo Health**: *"Audit this project. What is my readiness score?"*
 - **For CLI Tools**: *"Record a terminal demo of my CLI tool and add it to the README."*
 ...
-- **For Socials**: *"Write a LinkedIn post and an elevator pitch for this showcase."*
+- **For Socials**: *"Write a LinkedIn post and a Reddit thread for this showcase."*
 - **For Galleries**: *"Add a visual gallery to my existing README without overwriting my notes."*
 
 ## ✨ The Magic Features
