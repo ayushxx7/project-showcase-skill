@@ -14,10 +14,13 @@ This skill automates the "last mile" of development: showcasing your work to the
 
 ## Core Workflows
 
-### 1. Initial Analysis
-- **Goal**: Identify project type and key routes.
+### 1. Initial Analysis & Auto-Setup
+- **Goal**: Identify project type and ensure the environment is ready.
+- **Dependency Check (MANDATORY)**:
+    - Before any capture, the agent **MUST** check if `playwright` (Python) and `vhs` (System) are installed.
+    - If missing, the agent **MUST** autonomously run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`) without asking, unless explicitly restricted.
 - **Triggers**: "Set up a showcase for this project", "Analyze my UI for screenshots".
-- **Action**: Look for configuration files (e.g., `.streamlit/config.toml`, `package.json`, `app.py`) to determine the web server type and default ports.
+- **Action**: Look for configuration files to determine the web server type and default ports.
 
 ### 2. Automated Capture (`scripts/capture.py` & `scripts/record_cli.tape`)
 - **Goal**: Generate and execute scripts to capture the UI or Terminal.
@@ -37,14 +40,12 @@ This skill automates the "last mile" of development: showcasing your work to the
 
 ### 3. README Documentation
 - **Goal**: Build a professional README with a visual gallery.
-- **Triggers**: "Generate a README for this project", "Add a UI gallery to my README".
-- **Action**: Use the templates in `references/readme_templates.md` to structure:
-    - **UX Audit**: Ensure 'Live App' links are at the very top of the Hero section using the `for-the-badge` style with a call-to-action like 'Click Here to Explore'.
-    - Hero section with high-level mission.
-    - Feature breakdown with emojis.
-    - **UI Gallery**: A responsive Markdown table displaying screenshots.
-    - Tech Stack with icons/badges.
-    - Verified Quality section (tests, coverage).
+- **Action**: Use the templates in `references/readme_templates.md` to structure content.
+- **Preservation Policy (CRITICAL)**: 
+    - **NEVER** overwrite an existing README entirely if it contains custom developer documentation.
+    - **Surgical Injection**: Only inject the `Showcase Assets`, `Tech Stack`, or `Visual Gallery` sections.
+    - **Verify Before Commit**: Always check if the user has manually written "How it Works" or "Architecture" sections and ensure these are **preserved and merged**, not replaced.
+- **UX Audit**: Ensure 'Live App' links are at the very top of the Hero section.
 
 ### 4. Elevator Pitch & Social Media
 - **Goal**: Summarize the project for external communication.
