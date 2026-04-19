@@ -18,6 +18,7 @@ Use these structures to build high-quality project galleries and feature breakdo
 4. **Feature Set**: Grouped by category (e.g., 🤖 AI, 📈 Analytics, 🔍 Search).
 5. **UI Gallery**: A clean table with high-res screenshots.
 6. **Tech Stack**: Iconography-led (React, Groq, Playwright, etc.).
+7. **License**: A clear statement of the project's license.
 ---
 
 ## 2. The Library/CLI Template

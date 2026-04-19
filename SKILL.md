@@ -52,6 +52,7 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **Visual Gallery**: The captured Web/CLI assets.
     - **How to Use**: Clear instructions on how to run or interact with the project.
     - **Tech Stack**: Iconography-led list of tools.
+    - **License**: Clear statement of the project's open-source license.
 - **Preservation Policy**: 
     - Do not overwrite an existing README entirely if it contains custom developer documentation.
     - **Surgical Injection**: Only inject the `Showcase Assets`, `Tech Stack`, or `Visual Gallery` sections.

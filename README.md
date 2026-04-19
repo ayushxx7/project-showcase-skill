@@ -62,5 +62,9 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **Agent Protocol**: Universal Skill Schema (Gemini, Claude, Generic)
 - **Design**: Shields.io for modern CTA badges
 
+## 📜 License
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
 ---
 *Built with ❤️ for Vibe Coders everywhere. Stop documenting. Start showcasing.*
+
