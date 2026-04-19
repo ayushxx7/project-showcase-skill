@@ -13,10 +13,14 @@ This skill automates the "last mile" of development: showcasing your work to the
     - *Note*: Terminal recording is currently optimized for Unix-like environments.
 
 ## Core Workflows
-
 ### 1. Initial Analysis & Auto-Setup
 - **Goal**: Identify project type and ensure the environment is ready.
+- **Security & Privacy Scan (MANDATORY)**:
+    - Before any capture, the agent **MUST** scan the project for common API key patterns (OpenAI, Anthropic, Google, AWS, etc.).
+    - If secrets are found in the source code or `.env` files, the agent **MUST** warn the user and propose adding them to `.gitignore`.
+    - **Visual Privacy**: During UI capture, ensure no sensitive keys are visible in the rendered UI. If detected, the agent should blur or mask them before saving the screenshot.
 - **License Verification**:
+...
     - Check if the project has a `LICENSE` file.
     - If missing, inform the user: *"Your project is missing a LICENSE. Adding one makes it officially open-source and accessible."*
     - Propose adding an MIT License as a default, but allow the user to provide a different license type.

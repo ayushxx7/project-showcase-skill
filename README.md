@@ -35,9 +35,10 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **For Galleries**: *"Add a visual gallery to my existing README without overwriting my notes."*
 
 ## ✨ The Magic Features
-
 ### 🎬 Self-Healing Web Capture
+- **Privacy-First Security Scan**: Automatically detects and warns about sensitive API keys (OpenAI, Anthropic, etc.) or `.env` leaks before capture.
 - **Auto-Verification**: Detects 404s, blank screens, and hydration lag.
+...
 - **Smart Retries**: If the UI isn't ready, the skill waits, reloads, and fixes the capture autonomously.
 - **Video Recording**: High-res `.webm` recordings of your browser interactions.
 

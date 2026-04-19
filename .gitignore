@@ -9,3 +9,4 @@ showcase/record_cli.tape
 .venv/
 .showcase_venv/
 node_modules/
+.env
