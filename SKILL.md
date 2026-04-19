@@ -13,16 +13,16 @@ This skill automates the "last mile" of development: showcasing your work to the
     - *Note*: Terminal recording is currently optimized for Unix-like environments.
 
 ## Core Workflows
+
 ### 1. Initial Analysis & Auto-Setup
 - **Goal**: Identify project type and ensure the environment is ready.
-- **License Verification (MANDATORY)**:
+- **License Verification**:
     - Check if the project has a `LICENSE` file.
-    - If missing, the agent **MUST** inform the user: *"Your project is missing a LICENSE. Adding one makes it officially open-source and accessible."*
-    - Propose adding an **MIT License** as a default, but allow the user to provide a different license type.
-- **Dependency Check (MANDATORY)**:
-...
-    - Before any capture, the agent **MUST** check if `playwright` (Python) and `vhs` (System) are installed.
-    - If missing, the agent **MUST** autonomously run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`) without asking, unless explicitly restricted.
+    - If missing, inform the user: *"Your project is missing a LICENSE. Adding one makes it officially open-source and accessible."*
+    - Propose adding an MIT License as a default, but allow the user to provide a different license type.
+- **Dependency Check**:
+    - Before any capture, the agent should check if `playwright` (Python) and `vhs` (System) are installed.
+    - If missing, the agent should run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`) to ensure the environment is ready.
 - **Triggers**: "Showcase this project. Start the server and capture the UI.", "Set up a showcase for this project", "Analyze my UI for screenshots".
 - **Action**: Look for configuration files to determine the web server type and default ports.
 
@@ -30,19 +30,21 @@ This skill automates the "last mile" of development: showcasing your work to the
 - **Goal**: Generate and execute scripts to capture the UI or Terminal.
 - **Triggers**: "Record a terminal demo of my CLI tool and add it to the README.", "Take screenshots of my app", "Capture the UI", "Record my CLI tool".
 - **Action**: 
-    - **Web**: Create or update a `capture_ui.py` script. **Execute it** to generate screenshots and videos.
-    - **CLI**: Create a `.tape` file for [VHS](https://github.com/charmbracelet/vhs). **Execute `vhs < your_file.tape`** to generate GIFs/MP4s.
-- **Verification & Auto-Fix (MANDATORY)**:
-    - After capture, **inspect the generated assets**. 
+    - **Web**: Create or update a `capture_ui.py` script. Execute it to generate screenshots and videos.
+    - **CLI**: Create a `.tape` file for [VHS](https://github.com/charmbracelet/vhs). Execute `vhs < your_file.tape` to generate GIFs/MP4s.
+- **Verification & Auto-Fix**:
+    - After capture, inspect the generated assets. 
     - **Failure Detection**: Look for 404 pages, blank screens, or `vhs` parser errors.
-    - **Auto-Fix**: If a failure is detected, diagnose the cause (e.g., port mismatch, server not started, hydration lag) and **retry once** with adjusted parameters (e.g., longer `wait_for_timeout`).
+    - **Auto-Fix**: If a failure is detected, diagnose the cause (e.g., port mismatch, server not started, hydration lag) and retry once with adjusted parameters (e.g., longer `wait_for_timeout`).
     - **User Bridge**: If the second attempt fails or the "intended outcome" is ambiguous, ask the user: *"The capture shows [X], but is that what you wanted? Give me a quick prompt (e.g., 'go to /dashboard') to guide me."*
-- **Cleanup (MANDATORY)**:
-    - Once the showcase is verified and the README is updated, **delete all temporary files**.
+- **Cleanup**:
+    - Once the showcase is verified and the README is updated, delete all temporary files.
     - This includes temporary `.tape` files, `capture_ui.py` scripts, and redundant screenshots not used in the final README.
     - Ensure only the final high-quality assets (e.g., `landing.png`, `demo.gif`) remain in the `showcase/` folder.
+
 ### 3. README Documentation
 - **Goal**: Build a professional README with a visual gallery.
+- **Triggers**: "Add a visual gallery to my existing README without overwriting my notes.", "Generate a README for this project".
 - **Action**: Use the templates in `references/readme_templates.md` to structure content.
 - **Mandatory Sections**:
     - **UX Audit**: Top-level 'Live App' badges.
@@ -50,11 +52,10 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **Visual Gallery**: The captured Web/CLI assets.
     - **How to Use**: Clear instructions on how to run or interact with the project.
     - **Tech Stack**: Iconography-led list of tools.
-- **Preservation Policy (CRITICAL)**: 
-...
-    - **NEVER** overwrite an existing README entirely if it contains custom developer documentation.
+- **Preservation Policy**: 
+    - Do not overwrite an existing README entirely if it contains custom developer documentation.
     - **Surgical Injection**: Only inject the `Showcase Assets`, `Tech Stack`, or `Visual Gallery` sections.
-    - **Verify Before Commit**: Always check if the user has manually written "How it Works" or "Architecture" sections and ensure these are **preserved and merged**, not replaced.
+    - **Verify Before Commit**: Check if the user has manually written "How it Works" or "Architecture" sections and ensure these are preserved and merged, not replaced.
 - **UX Audit**: Ensure 'Live App' links are at the very top of the Hero section.
 
 ### 4. Elevator Pitch & Social Media
