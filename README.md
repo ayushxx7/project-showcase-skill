@@ -8,26 +8,7 @@
 [![Live App](https://img.shields.io/badge/Live_App-Click_Here_to_Explore-blue?style=for-the-badge&logo=vercel)](https://github.com/ayushxx7/project-showcase-skill)
 [![CLI Demo](https://img.shields.io/badge/CLI_Demo-View_Terminal_Recording-green?style=for-the-badge&logo=asciinema)](showcase/cli_power_demo.gif)
 
-You build the tech. We'll build the stage. **Project Showcase Skill** is a high-performance agent skill that automates the "last mile" of development. No more manual screenshots, no more broken links, and no more boring READMEs.
-
-## ✨ The Magic Features
-
-### 🎬 Self-Healing Web Capture
-Don't just take a screenshot—capture the experience.
-- **Auto-Verification**: Detects 404s, blank screens, and hydration lag.
-- **Smart Retries**: If the UI isn't ready, the skill waits, reloads, and fixes the capture autonomously.
-- **Video Recording**: High-res `.webm` recordings of your browser interactions.
-
-### 📟 Automated CLI Demos
-Make your terminal tools look as good as your web apps.
-- **VHS Integration**: Scripted terminal sessions that "type" themselves into high-fidelity GIFs.
-- **Zero Effort**: Just tell the agent what commands to run; it generates the `.tape` and the GIF for you.
-
-### 🛡️ Dev-First README Injection
-We respect your work. The skill is designed for **surgical precision**.
-- **Preserve & Merge**: It identifies your manual documentation and injects visual galleries around it.
-- **UX Audit**: Automatically places high-conversion "Live App" badges at the very top.
-- **Auto-Cleanup**: Generates the assets, updates the docs, and deletes the temporary scripts.
+You build the tech. We'll build the stage. **Project Showcase Skill** automates the "last mile" of development—creating professional visual galleries and documentation in seconds.
 
 ## 📦 Installation in 30 Seconds
 
@@ -51,6 +32,22 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **For CLI Tools**: *"Record a terminal demo of my CLI tool and add it to the README."*
 - **For Socials**: *"Write a LinkedIn post and an elevator pitch for this showcase."*
 - **For Galleries**: *"Add a visual gallery to my existing README without overwriting my notes."*
+
+## ✨ The Magic Features
+
+### 🎬 Self-Healing Web Capture
+- **Auto-Verification**: Detects 404s, blank screens, and hydration lag.
+- **Smart Retries**: If the UI isn't ready, the skill waits, reloads, and fixes the capture autonomously.
+- **Video Recording**: High-res `.webm` recordings of your browser interactions.
+
+### 📟 Automated CLI Demos
+- **VHS Integration**: Scripted terminal sessions that "type" themselves into high-fidelity GIFs.
+- **Zero Effort**: Just tell the agent what commands to run; it generates the `.tape` and the GIF for you.
+
+### 🛡️ Dev-First README Injection
+- **Preserve & Merge**: It identifies your manual documentation and injects visual galleries around it.
+- **UX Audit**: Automatically places high-conversion "Live App" badges at the very top.
+- **Auto-Cleanup**: Generates the assets, updates the docs, and deletes the temporary scripts.
 
 ## 🎬 Showcase Gallery
 | 🎬 Web Showcase | 📟 CLI Power Demo (GIF) |
