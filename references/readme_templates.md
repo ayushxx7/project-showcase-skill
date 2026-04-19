@@ -16,7 +16,8 @@ Use these structures to build high-quality project galleries and feature breakdo
     - **Step 2**: Configuration/Environment.
     - **Step 3**: Execution (The "Magic" command).
 4. **Feature Set**: Grouped by category (e.g., 🤖 AI, 📈 Analytics, 🔍 Search).
-5. **UI Gallery**: A clean table with high-res screenshots.
+5. **Visual Gallery**: A clean table with high-res screenshots and a high-impact `demo.gif`.
+   - Example: `![Demo Workflow](showcase/demo.gif)`
 6. **Tech Stack**: Iconography-led (React, Groq, Playwright, etc.).
 7. **License**: A clear statement of the project's license.
 ---
@@ -27,8 +28,8 @@ Use these structures to build high-quality project galleries and feature breakdo
 ### Structure:
 1. **Logo & Installation**: Badges + `pip install`.
 2. **Why it Exists**: "The Problem vs. The Solution".
-3. **Interactive Demo**: ASCII art or a [VHS](https://github.com/charmbracelet/vhs) GIF recording.
-   - Example: `![CLI Demo](showcase/cli_demo.gif)`
+3. **Interactive Demo**: ASCII art, a [VHS](https://github.com/charmbracelet/vhs) GIF recording, or a `demo.gif` from `capture.py`.
+   - Example: `![CLI Demo](showcase/demo.gif)`
 4. **Usage Examples**: Code blocks for the 3 most common workflows.
 5. **API Reference**: Link to docs or a summary of key methods.
 
@@ -37,9 +38,14 @@ Use these structures to build high-quality project galleries and feature breakdo
 ## 3. UI Gallery Patterns
 
 ### Two-Column Table (Standard)
-| 🎬 Key Feature 1 | 📊 Key Feature 2 |
+| 🎬 Core Workflow (GIF) | 📊 Key Feature |
 | :---: | :---: |
-| ![Feature 1](showcase/01.png) | ![Feature 2](showcase/02.png) |
+| ![Workflow](showcase/demo.gif) | ![Feature 1](showcase/01.png) |
+
+### Comparative A/B Gallery
+| ❌ Before | ✅ After (AI Enhanced) |
+| :---: | :---: |
+| ![Before](showcase/before.png) | ![After](showcase/after.png) |
 
 ### Single-Column High-Res (Showcase)
 ### 🤖 Feature Deep Dive

@@ -17,13 +17,16 @@ if [ "$PLATFORM" == "mac" ]; then
     if ! command -v brew &> /dev/null; then
         echo "❌ Homebrew not found. Please install it: https://brew.sh/"
     else
-        echo "📦 Installing VHS for terminal recording..."
-        brew install vhs
+        echo "📦 Installing VHS and ffmpeg..."
+        brew install vhs ffmpeg
     fi
 elif [ "$PLATFORM" == "linux" ]; then
-    echo "🐧 Linux detected. Checking for VHS..."
+    echo "🐧 Linux detected. Checking for VHS and ffmpeg..."
     if ! command -v vhs &> /dev/null; then
         echo "📦 Please install VHS: https://github.com/charmbracelet/vhs#installation"
+    fi
+    if ! command -v ffmpeg &> /dev/null; then
+        echo "📦 Please install ffmpeg using your package manager (e.g., sudo apt install ffmpeg)"
     fi
 fi
 

@@ -15,6 +15,11 @@ This skill automates the "last mile" of development: showcasing your work to the
 ## Core Workflows
 ### 1. Initial Analysis & Auto-Setup
 - **Goal**: Identify project type and ensure the environment is ready.
+- **Framework Detection & Secret Management**:
+    - **Streamlit Projects**: Detect via `streamlit_app.py` or `streamlit` in `requirements.txt`.
+    - **Secret Migration**: If detected, propose migrating `.env` keys to `.streamlit/secrets.toml` to align with Streamlit Cloud standards.
+    - **Cloud Readiness**: Provide instructions for the user to update their Cloud Dashboard secrets after migration.
+- **TOML Support**: Prefer `.toml` (e.g., `pyproject.toml`, `secrets.toml`) for configuration in modern frameworks, while maintaining fallback support for `.env`.
 - **Security & Privacy Scan**:
     - Before any capture, the agent should scan the project for common API key patterns (OpenAI, Anthropic, Google, AWS, etc.).
     - If secrets are found in the source code or `.env` files, the agent should warn the user and propose adding them to `.gitignore`.
@@ -29,14 +34,36 @@ This skill automates the "last mile" of development: showcasing your work to the
     - Propose and apply GitHub Topics (labels) using `gh repo edit --add-topic` to improve searchability.
     - **Optional Commit & Push**: Always ask the user if they'd like to commit and push the topic updates, generated assets, or README changes. Only proceed autonomously if a preference is already established.
 - **Dependency Check**:
-    - Before any capture, the agent should check if `playwright` (Python) and `vhs` (System) are installed.
-    - If missing, the agent should run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`) to ensure the environment is ready.
+    - Before any capture, the agent should check if `playwright` (Python), `vhs` (System), and `ffmpeg` (for Video-to-GIF) are installed.
+    - If missing, the agent should run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`, `brew install ffmpeg`) to ensure the environment is ready.
 - **Triggers**: "Showcase this project. Start the server and capture the UI.", "Set up a showcase for this project", "Analyze my UI for screenshots".
 - **Action**: Look for configuration files to determine the web server type and default ports.
 
 ### 2. Automated Capture (`scripts/capture.py` & `scripts/record_cli.tape`)
-- **Goal**: Generate and execute scripts to capture the UI or Terminal.
-- **Triggers**: "Record a terminal demo of my CLI tool and add it to the README.", "Take screenshots of my app", "Capture the UI", "Record my CLI tool".
+- **Goal**: Generate and execute scripts to capture the UI or Terminal with surgical precision.
+- **Safety & Precision Protocols**:
+    - **Protocol 1: Selector Discovery Phase**: 
+        - Before interaction, the agent MUST list all interactive labels, placeholders, and buttons on the page.
+        - Use this to distinguish between similar elements (e.g., search bars vs. filters) to avoid "blind guessing."
+    - **Protocol 2: Two-Phase Hydration**: 
+        - **Pre-load Phase**: Navigate to the URL and wait for a "Stable State" (e.g., specific H1 appearance or removal of loading spinners).
+        - **Recording Phase**: Start video recording ONLY after the app is confirmed to be interactive.
+    - **Protocol 3: Automated Video Post-Processing (The "Clean Cut")**:
+        - Use `ffmpeg` to trim the start of recordings (e.g., `-ss 2`) to remove residual loading frames.
+        - Optimize the GIF palette for high-clarity/low-filesize to ensure README performance.
+    - **Protocol 4: Visual Audit & Verification**:
+        - After generation, the agent MUST perform a "Verification Step."
+        - Describe the intended flow and confirm the logs show the exact selectors used matched that intent.
+        - If a fallback selector was used, re-verify if the intended element was missed.
+- **Rich Media & Video-to-GIF**: 
+    - Support video recording via Playwright (`record_video_dir`).
+    - Use `ffmpeg` to transform `.webm` recordings into optimized `.gif` files for GitHub README compatibility.
+    - Target `demo.gif` for the visual gallery.
+- **Hydration-Aware Captures**: 
+    - Include configurable "hydration delays" (e.g., 10-20 seconds) for JS-heavy frameworks like Streamlit or Dash to ensure the UI is fully interactive before taking screenshots.
+- **Comparative Demonstration (A/B Mode)**:
+    - Perform a default action (e.g., a standard search), capture it, toggle a feature (e.g., enable "AI Assistant"), and capture the improved result in a single continuous flow to demonstrate the value proposition.
+- **Triggers**: "Record a terminal demo of my CLI tool and add it to the README.", "Take screenshots of my app", "Capture the UI", "Record my CLI tool", "Create an A/B demo".
 - **Action**: 
     - **Web**: Create or update a `capture_ui.py` script. Execute it to generate screenshots and videos.
     - **CLI**: Create a `.tape` file for [VHS](https://github.com/charmbracelet/vhs). Execute `vhs < your_file.tape` to generate GIFs/MP4s.
