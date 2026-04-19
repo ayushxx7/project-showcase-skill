@@ -10,3 +10,8 @@ showcase/record_cli.tape
 .showcase_venv/
 node_modules/
 .env
+
+# Misc
+.DS_Store
+__pycache__/
+*.pyc

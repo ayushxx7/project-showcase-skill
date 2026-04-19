@@ -1,0 +1,40 @@
+[
+  {
+    "name": "login_flow",
+    "interactions": [
+      {
+        "action": "fill",
+        "selector": "input[name='username']",
+        "value": "demo_user",
+        "filename": "login_1_username.png"
+      },
+      {
+        "action": "fill",
+        "selector": "input[name='password']",
+        "value": "supersecretpassword",
+        "filename": "login_2_password.png"
+      },
+      {
+        "action": "click",
+        "selector": "button[type='submit']",
+        "filename": "login_3_dashboard.png"
+      }
+    ]
+  },
+  {
+    "name": "search_and_hover",
+    "interactions": [
+      {
+        "action": "fill",
+        "selector": "#search-bar",
+        "value": "playwright",
+        "wait": 1
+      },
+      {
+        "action": "hover",
+        "selector": ".result-card:first-child",
+        "filename": "hover_state.png"
+      }
+    ]
+  }
+]
