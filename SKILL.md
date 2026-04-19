@@ -107,6 +107,10 @@ This skill automates the "last mile" of development: showcasing your work to the
         - 🛠️ **Tech Stack**: Brief mention of the engines used.
 - **Verification & Validation**:
     - **URL Check**: Verify the release formatting by checking the output URL.
+    - **Live Repository Audit**: 
+        - Before finalizing, use the `capture.py` script or Playwright to take a screenshot of the **actual GitHub Repository URL**.
+        - Visually confirm that the **README**, **Badges**, **Visual Gallery**, and **GitHub Topics** are rendered correctly on the live site.
+        - Ensure the **Release** is visible in the sidebar and associated with the correct tag.
     - **Clean State**: If a force-push was required to clean secrets, ensure the release is re-associated with the latest clean commit hash.
     - **Repo Health Sync**: Ensure the Repo Health Score table in the README reflects the new Release status.
 
@@ -162,6 +166,7 @@ Before finalizing any showcase or delivery, the agent MUST go through this check
 - [ ] **Documentation**: README surgically updated with Visual Gallery and Repo Health Score?
 - [ ] **Discoverability**: GitHub Topics applied via `gh repo edit`?
 - [ ] **Release**: v0.1.0-alpha created with `--notes-file` and verified via URL?
+- [ ] **Final Audit**: Live Repository visually verified via screenshot (README, Badges, Release)?
 
 *Note: All items have equal priority and must be completed unless explicitly confirmed as out of scope.*
 
