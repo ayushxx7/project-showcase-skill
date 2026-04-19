@@ -1,6 +1,10 @@
 # Project Showcase Skill 🎬✨
 **Automated Documentation | CLI Recording | Playwright Showcases**
 
+[![Tested on Gemini](https://img.shields.io/badge/Tested_on-Gemini_CLI-8E44AD?style=for-the-badge&logo=google-gemini&logoColor=white)](https://github.com/google/gemini-cli)
+[![Works on Claude](https://img.shields.io/badge/Works_on-Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://github.com/anthropic/claude-code)
+[![Universal Agent Support](https://img.shields.io/badge/Support-Universal_Agents-green?style=for-the-badge)](https://github.com/ayushxx7/project-showcase-skill)
+
 [![Live App](https://img.shields.io/badge/Live_App-Click_Here_to_Explore-blue?style=for-the-badge&logo=vercel)](https://github.com/ayushxx7/project-showcase-skill)
 [![CLI Demo](https://img.shields.io/badge/CLI_Demo-View_Terminal_Recording-green?style=for-the-badge&logo=asciinema)](showcase/cli_power_demo.gif)
 
