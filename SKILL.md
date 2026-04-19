@@ -98,8 +98,8 @@ This skill automates the "last mile" of development: showcasing your work to the
 ### 4. Professional Delivery & Release
 - **Goal**: Package the project for official discovery and distribution.
 - **Professional GitHub Release**:
-    - Create an automated **"Alpha Release" (v0.1.0-alpha)** upon completion of the showcase.
-    - **Title Format**: `v0.1.0-alpha: [High-Impact Feature Name]` (e.g., `v0.1.0-alpha: AI-Powered Search`).
+    - Create an automated **Release (e.g., v0.1.0-alpha/beta/stable)** upon completion of the showcase.
+    - **Title Format**: `vX.Y.Z-[stage]: [High-Impact Feature Name]`.
     - **Notes Preparation**: NEVER pass notes as raw strings with `\n` to the CLI. Always create a temporary `release_notes.md` and use `gh release create <tag> --notes-file release_notes.md`.
     - **Release Structure**:
         - 🚀 **Live App**: Prominent link at the very top.
@@ -112,7 +112,6 @@ This skill automates the "last mile" of development: showcasing your work to the
         - Visually confirm that the **README**, **Badges**, **Visual Gallery**, and **GitHub Topics** are rendered correctly on the live site.
         - Ensure the **Release** is visible in the sidebar and associated with the correct tag.
     - **Clean State**: If a force-push was required to clean secrets, ensure the release is re-associated with the latest clean commit hash.
-    - **Repo Health Sync**: Ensure the Repo Health Score table in the README reflects the new Release status.
 
 ### 5. Repo Health & Healing (Audit & Fix)
 - **Goal**: Diagnose the project's "Readiness" and offer surgical improvements.
@@ -121,16 +120,15 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **Diagnosis**: Perform a scan for:
         - **Documentation**: README, LICENSE, `.env.example`.
         - **Security**: Leaked API keys, un-ignored `.env` files.
-        - **Automation**: Presence of `setup.sh` or installation scripts.
-        - **Showcase**: Presence of `showcase/` assets and `.tape` files.
-        - **Quality (TDD)**: Presence of `tests/` directory and passing test status.
-    - **Scoring**: Assign a weighted score on a **0-100+ Scale** (Bonus points allowed):
-        - **Documentation (20 pts)**: README, LICENSE, `.env.example`.
-        - **Security (20 pts)**: No leaked keys, `.env` in `.gitignore`.
-        - **Automation (20 pts)**: Working setup and install scripts.
-        - **Quality/TDD (20 pts)**: Tests present and passing.
+        - **Automation/Quality**: Setup scripts and passing tests.
+        - **Showcase**: High-res screenshots and VHS demos.
+        - **Distribution**: Live App links and official GitHub Release activity.
+    - **Scoring**: Assign a weighted score on a **0-100 Scale**:
+        - **Documentation & Licensing (15 pts)**: README, LICENSE, `.env.example`.
+        - **Security (15 pts)**: No leaked keys, `.env` in `.gitignore`.
+        - **Automation & Quality (20 pts)**: Working setup scripts and passing tests.
         - **Showcase (20 pts)**: High-res screenshots and VHS demos.
-        - **Bonus (+5-10 pts)**: GitHub Actions, multi-platform support, or interactive demos.
+        - **Distribution (30 pts)**: Live App link at top of README and official GitHub Release history.
     - **Thoughtful Prescription**: Before fixing, the agent should present a **"Healing Plan"**:
         - List the specific missing or broken items.
         - Explain *why* they matter (e.g., "Missing LICENSE prevents open-source contribution").
@@ -165,7 +163,8 @@ Before finalizing any showcase or delivery, the agent MUST go through this check
 - [ ] **Audit**: Visual verification performed against intended flow?
 - [ ] **Documentation**: README surgically updated with Visual Gallery and Repo Health Score?
 - [ ] **Discoverability**: GitHub Topics applied via `gh repo edit`?
-- [ ] **Release**: v0.1.0-alpha created with `--notes-file` and verified via URL?
+- [ ] **Release**: vX.Y.Z Release created with `--notes-file` and verified via URL?
+- [ ] **Distribution**: Live App link confirmed at top of README and Release active?
 - [ ] **Final Audit**: Live Repository visually verified via screenshot (README, Badges, Release)?
 
 *Note: All items have equal priority and must be completed unless explicitly confirmed as out of scope.*
