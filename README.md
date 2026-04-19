@@ -28,15 +28,17 @@ The skill is self-configuring. On first trigger, it will autonomously set up **P
 ## 🪄 How to Use
 
 Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try these "magic phrases":
-
 - **For Web Apps**: *"Showcase this project. Start the server and capture the UI."*
+- **For Repo Health**: *"Audit this project. What is my readiness score?"*
 - **For CLI Tools**: *"Record a terminal demo of my CLI tool and add it to the README."*
+...
 - **For Socials**: *"Write a LinkedIn post and an elevator pitch for this showcase."*
 - **For Galleries**: *"Add a visual gallery to my existing README without overwriting my notes."*
 
 ## ✨ The Magic Features
 ### 🎬 Self-Healing Web Capture
 - **Privacy-First Security Scan**: Automatically detects and warns about sensitive API keys (OpenAI, Anthropic, etc.) or `.env` leaks before capture.
+- **Repo Health & Healing (0-10 Audit)**: Let your "Project Resident Doctor" scan your repo for missing licenses, documentation gaps, and security risks. It assigns a **Health Score** and offers a **Surgical Healing Plan** to get you to 10/10 readiness.
 - **Auto-Verification**: Detects 404s, blank screens, and hydration lag.
 ...
 - **Smart Retries**: If the UI isn't ready, the skill waits, reloads, and fixes the capture autonomously.

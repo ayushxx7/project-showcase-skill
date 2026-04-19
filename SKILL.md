@@ -62,8 +62,24 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **Surgical Injection**: Only inject the `Showcase Assets`, `Tech Stack`, or `Visual Gallery` sections.
     - **Verify Before Commit**: Check if the user has manually written "How it Works" or "Architecture" sections and ensure these are preserved and merged, not replaced.
 - **UX Audit**: Ensure 'Live App' links are at the very top of the Hero section.
+### 4. Repo Health & Healing (Audit & Fix)
+- **Goal**: Diagnose the project's "Readiness" and offer surgical improvements.
+- **Triggers**: "Audit this repository", "How healthy is my project?", "Heal this repo".
+- **Action**:
+    - **Diagnosis**: Perform a scan for:
+        - **Documentation**: README, LICENSE, `.env.example`.
+        - **Security**: Leaked API keys, un-ignored `.env` files.
+        - **Automation**: Presence of `setup.sh` or installation scripts.
+        - **Showcase**: Presence of `showcase/` assets and `.tape` files.
+    - **Scoring**: Assign a weighted score from **0.0 to 10.0**.
+    - **Thoughtful Prescription**: Before fixing, the agent should present a **"Healing Plan"**:
+        - List the specific missing or broken items.
+        - Explain *why* they matter (e.g., "Missing LICENSE prevents open-source contribution").
+        - Describe exactly what files will be created or modified.
+    - **The Heal**: Only after user approval, apply the fixes surgically and re-audit to show the improved score.
 
-### 4. Elevator Pitch & Social Media
+### 5. Elevator Pitch & Social Media
+...
 - **Goal**: Summarize the project for external communication.
 - **Triggers**: "Write a LinkedIn post and an elevator pitch for this showcase.", "Write a LinkedIn post for this project", "Give me an elevator pitch".
 - **Action**: Distill the project into 3 core value propositions, a "why it matters" statement, and a call to action.
