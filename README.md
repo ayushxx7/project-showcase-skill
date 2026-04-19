@@ -6,6 +6,20 @@
 
 **Project Showcase Skill** automates the "last mile" of development: showcasing your work to the world. It is a high-performance **developer tool** for **workflow automation**, creating professional **visual galleries** and **automated documentation** for your projects.
 
+## 📦 Installation
+
+### 1. Install the Skill
+Use the universal installer to add this to your Gemini CLI or Claude Code:
+```bash
+curl -sSL https://raw.githubusercontent.com/ayushxx7/project-showcase-skill/main/skills.sh | bash
+```
+
+### 2. Setup Dependencies
+Once installed, navigate to the skill directory and run the environment setup (installs Playwright & VHS):
+```bash
+./scripts/setup.sh
+```
+
 ## 🚀 Overview
 Stop sending boring READMEs. This skill identifies key UI and CLI components, captures them automatically using **Playwright** and **VHS**, and generates professional, high-conversion documentation.
 
