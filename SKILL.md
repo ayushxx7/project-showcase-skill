@@ -54,6 +54,7 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **UX Audit**: Top-level 'Live App' badges.
     - **Hero Section**: Mission statement and value prop.
     - **Visual Gallery**: The captured Web/CLI assets.
+    - **Repo Health Score**: A diagnostic table showing the 0-10 readiness score across Documentation, Security, Automation, and Showcase categories.
     - **How to Use**: Clear instructions on how to run or interact with the project.
     - **Tech Stack**: Iconography-led list of tools.
     - **License**: Clear statement of the project's open-source license.
