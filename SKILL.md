@@ -29,10 +29,10 @@ This skill automates the "last mile" of development: showcasing your work to the
     - Check if the project has a `LICENSE` file.
     - If missing, inform the user: *"Your project is missing a LICENSE. Adding one makes it officially open-source and accessible."*
     - Propose adding an MIT License as a default, but allow the user to provide a different license type.
-- **GitHub Discoverability**:
-    - The agent should scan the tech stack and project purpose.
-    - Propose and apply GitHub Topics (labels) using `gh repo edit --add-topic` to improve searchability.
-    - **Optional Commit & Push**: Always ask the user if they'd like to commit and push the topic updates, generated assets, or README changes. Only proceed autonomously if a preference is already established.
+- **GitHub Discoverability (Labels)**:
+    - Always scan the `requirements.txt`, `package.json`, and project structure to identify the tech stack.
+    - Propose and apply GitHub Topics using a single comma-separated command: `gh repo edit --add-topic "topic1,topic2,topic3"`.
+    - **Priority Topics**: Include the framework (e.g., `streamlit`, `react`), database (e.g., `neondb`, `mongodb`), and core feature (e.g., `ai-agent`, `scraper`).
 - **Dependency Check**:
     - Before any capture, the agent should check if `playwright` (Python), `vhs` (System), and `ffmpeg` (for Video-to-GIF) are installed.
     - If missing, the agent should run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`, `brew install ffmpeg`) to ensure the environment is ready.
@@ -94,7 +94,23 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **Surgical Injection**: Only inject the `Showcase Assets`, `Tech Stack`, or `Visual Gallery` sections.
     - **Verify Before Commit**: Check if the user has manually written "How it Works" or "Architecture" sections and ensure these are preserved and merged, not replaced.
 - **UX Audit**: Ensure 'Live App' links are at the very top of the Hero section.
-### 4. Repo Health & Healing (Audit & Fix)
+
+### 4. Professional Delivery & Release
+- **Goal**: Package the project for official discovery and distribution.
+- **Professional GitHub Release**:
+    - Create an automated **"Alpha Release" (v0.1.0-alpha)** upon completion of the showcase.
+    - **Title Format**: `v0.1.0-alpha: [High-Impact Feature Name]` (e.g., `v0.1.0-alpha: AI-Powered Search`).
+    - **Notes Preparation**: NEVER pass notes as raw strings with `\n` to the CLI. Always create a temporary `release_notes.md` and use `gh release create <tag> --notes-file release_notes.md`.
+    - **Release Structure**:
+        - 🚀 **Live App**: Prominent link at the very top.
+        - 🌟 **Highlights**: Bulleted list of core value propositions (AI features, DB integration, Security, etc.).
+        - 🛠️ **Tech Stack**: Brief mention of the engines used.
+- **Verification & Validation**:
+    - **URL Check**: Verify the release formatting by checking the output URL.
+    - **Clean State**: If a force-push was required to clean secrets, ensure the release is re-associated with the latest clean commit hash.
+    - **Repo Health Sync**: Ensure the Repo Health Score table in the README reflects the new Release status.
+
+### 5. Repo Health & Healing (Audit & Fix)
 - **Goal**: Diagnose the project's "Readiness" and offer surgical improvements.
 - **Triggers**: "Audit this repository", "How healthy is my project?", "Heal this repo".
 - **Action**:
@@ -117,7 +133,7 @@ This skill automates the "last mile" of development: showcasing your work to the
         - Describe exactly what files will be created or modified.
     - **The Heal**: Only after user approval, apply the fixes surgically and re-audit to show the improved score.
 
-### 5. Elevator Pitch & Social Media
+### 6. Elevator Pitch & Social Media
 - **Goal**: Summarize the project for external communication.
 - **Triggers**: "Write a LinkedIn post and an elevator pitch for this showcase.", "Write a Reddit post for this project", "Give me an elevator pitch".
 - **Action**: Distill the project into 3 core value propositions, a "why it matters" statement, and a call to action.
@@ -131,6 +147,21 @@ This skill automates the "last mile" of development: showcasing your work to the
 
 - **`scripts/capture.py`**: A generalized Playwright template that can be customized for different frameworks.
 - **`references/readme_templates.md`**: A collection of high-converting README structures.
+
+## Mandatory Execution Checklist
+Before finalizing any showcase or delivery, the agent MUST go through this checklist one-by-one to verify completion:
+
+- [ ] **Analysis**: Framework detected (Streamlit/React/etc.) and Secrets scanned?
+- [ ] **Security**: `.env` migrated/ignored and UI masks applied?
+- [ ] **Environment**: `setup.sh` run and all dependencies (Playwright, VHS, ffmpeg) verified?
+- [ ] **Capture**: Selector Discovery performed and Stability confirmed?
+- [ ] **Assets**: Clean-cut GIF and high-res screenshots generated?
+- [ ] **Audit**: Visual verification performed against intended flow?
+- [ ] **Documentation**: README surgically updated with Visual Gallery and Repo Health Score?
+- [ ] **Discoverability**: GitHub Topics applied via `gh repo edit`?
+- [ ] **Release**: v0.1.0-alpha created with `--notes-file` and verified via URL?
+
+*Note: All items have equal priority and must be completed unless explicitly confirmed as out of scope.*
 
 ## Best Practices
 - **Wait for Load**: Always include `page.wait_for_selector()` or `time.sleep()` to ensure charts and LLM responses are fully rendered.
