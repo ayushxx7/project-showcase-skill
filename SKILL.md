@@ -13,10 +13,14 @@ This skill automates the "last mile" of development: showcasing your work to the
     - *Note*: Terminal recording is currently optimized for Unix-like environments.
 
 ## Core Workflows
-
 ### 1. Initial Analysis & Auto-Setup
 - **Goal**: Identify project type and ensure the environment is ready.
+- **License Verification (MANDATORY)**:
+    - Check if the project has a `LICENSE` file.
+    - If missing, the agent **MUST** inform the user: *"Your project is missing a LICENSE. Adding one makes it officially open-source and accessible."*
+    - Propose adding an **MIT License** as a default, but allow the user to provide a different license type.
 - **Dependency Check (MANDATORY)**:
+...
     - Before any capture, the agent **MUST** check if `playwright` (Python) and `vhs` (System) are installed.
     - If missing, the agent **MUST** autonomously run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`) without asking, unless explicitly restricted.
 - **Triggers**: "Showcase this project. Start the server and capture the UI.", "Set up a showcase for this project", "Analyze my UI for screenshots".
