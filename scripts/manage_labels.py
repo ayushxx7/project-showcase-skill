@@ -44,7 +44,7 @@ def detect_topics():
             
     return sorted(list(detected))
 
-def update_gh_topics(topics):
+def update_gh_topics(topics, commit=False, push=False):
     topic_str = ",".join(topics)
     print(f"🏷️ Detected Topics: {topic_str}")
     try:
@@ -54,18 +54,33 @@ def update_gh_topics(topics):
         print(f"🚀 Updating GitHub topics...")
         subprocess.run(["gh", "repo", "edit", "--add-topic", topic_str], check=True)
         print("✅ GitHub topics updated successfully.")
+        
+        if commit:
+            print("📝 Committing topic updates...")
+            # We don't actually change files with topics, but the user might want a record
+            # Or this script could be extended to update a config file. 
+            # For now, let's assume we are committing the meta-change or any other changes made.
+            subprocess.run(["git", "add", "."], check=True)
+            subprocess.run(["git", "commit", "-m", f"chore: update github topics to {topic_str}"], check=True)
+            
+            if push:
+                print("📤 Pushing changes...")
+                subprocess.run(["git", "push"], check=True)
+                print("✅ Pushed to remote.")
+                
     except Exception as e:
-        print(f"⚠️ Could not update GitHub topics: {e}")
-        print("Make sure 'gh' CLI is installed and authenticated.")
+        print(f"⚠️ Git/GitHub operation failed: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--apply", action="store_true", help="Apply detected topics to the repo")
+    parser.add_argument("--commit", action="store_true", help="Commit the changes (optional)")
+    parser.add_argument("--push", action="store_true", help="Push the changes (optional)")
     args = parser.parse_args()
     
     topics = detect_topics()
     if args.apply:
-        update_gh_topics(topics)
+        update_gh_topics(topics, commit=args.commit, push=args.push)
     else:
         print(f"🔍 Suggested topics: {', '.join(topics)}")
         print("Run with --apply to update the repository.")
