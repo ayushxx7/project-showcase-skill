@@ -153,6 +153,8 @@ Before finalizing any showcase or delivery, the agent MUST go through this check
 
 - [ ] **Analysis**: Framework detected (Streamlit/React/etc.) and Secrets scanned?
 - [ ] **Security**: `.env` migrated/ignored and UI masks applied?
+- [ ] **Licensing**: LICENSE file present and MIT (or other) proposed if missing?
+- [ ] **Quality (TDD)**: Tests present and passing (verified via `pytest` or equivalent)?
 - [ ] **Environment**: `setup.sh` run and all dependencies (Playwright, VHS, ffmpeg) verified?
 - [ ] **Capture**: Selector Discovery performed and Stability confirmed?
 - [ ] **Assets**: Clean-cut GIF and high-res screenshots generated?
