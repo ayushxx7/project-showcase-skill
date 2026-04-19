@@ -71,5 +71,6 @@ This skill automates the "last mile" of development: showcasing your work to the
 
 ## Best Practices
 - **Wait for Load**: Always include `page.wait_for_selector()` or `time.sleep()` to ensure charts and LLM responses are fully rendered.
+- **Verified Quality**: After performing surgical README updates, the agent should run `python3 tests/test_readme_injection.py` to confirm the injection logic is still sound.
 - **Responsive Captures**: Take screenshots at multiple resolutions (Desktop: 1440x900, Mobile: 375x812).
 - **Clean Environment**: Ensure no sensitive data (keys, personal info) is visible in the screenshots.
