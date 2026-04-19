@@ -72,7 +72,13 @@ This skill automates the "last mile" of development: showcasing your work to the
         - **Security**: Leaked API keys, un-ignored `.env` files.
         - **Automation**: Presence of `setup.sh` or installation scripts.
         - **Showcase**: Presence of `showcase/` assets and `.tape` files.
+        - **Quality (TDD)**: Presence of `tests/` directory and passing test status.
     - **Scoring**: Assign a weighted score from **0.0 to 10.0**.
+        - Documentation (2.0 pts)
+        - Security (2.0 pts)
+        - Automation (2.0 pts)
+        - Showcase (2.0 pts)
+        - **Quality/TDD (2.0 pts)**: Presence of tests and successful execution.
     - **Thoughtful Prescription**: Before fixing, the agent should present a **"Healing Plan"**:
         - List the specific missing or broken items.
         - Explain *why* they matter (e.g., "Missing LICENSE prevents open-source contribution").

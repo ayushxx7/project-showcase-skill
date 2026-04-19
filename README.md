@@ -66,7 +66,8 @@ This project "eats its own dog food" and maintains a perfect readiness score.
 | | `.env` ignored | ✅ `.gitignore` configured | 1.5 / 1.5 |
 | **Automation** | `setup.sh` | ✅ Executable script | 1.0 / 1.0 |
 | | `skills.sh` | ✅ Universal installer | 1.0 / 1.0 |
-| **Showcase** | `showcase/` | ✅ High-res assets | 1.5 / 1.5 |
+| **Quality/TDD** | `tests/` | ✅ Passing unit tests | 2.0 / 2.0 |
+| **Showcase** | `showcase/` | ✅ High-res assets | 1.0 / 1.0 |
 | | `.tape` files | ✅ VHS script | 1.0 / 1.0 |
 
 ## 🎬 Showcase Gallery
