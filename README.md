@@ -1,12 +1,17 @@
 # Project Showcase Skill 🎬✨
+**Automated Documentation | CLI Recording | Playwright Showcases**
 
 [![Live App](https://img.shields.io/badge/Live_App-Click_Here_to_Explore-blue?style=for-the-badge&logo=vercel)](https://github.com/ayushxx7/project-showcase-skill)
-[![CLI Demo](https://img.shields.io/badge/CLI_Demo-View_Terminal_Recording-green?style=for-the-badge&logo=asciinema)](showcase/cli_demo.gif)
+[![CLI Demo](https://img.shields.io/badge/CLI_Demo-View_Terminal_Recording-green?style=for-the-badge&logo=asciinema)](showcase/cli_power_demo.gif)
 
-Automate the "last mile" of development: showcasing your work to the world.
+**Project Showcase Skill** automates the "last mile" of development: showcasing your work to the world. It is a high-performance **developer tool** for **workflow automation**, creating professional **visual galleries** and **automated documentation** for your projects.
 
 ## 🚀 Overview
-This skill identifies key UI and CLI components, captures them automatically using Playwright and VHS, and generates professional documentation.
+Stop sending boring READMEs. This skill identifies key UI and CLI components, captures them automatically using **Playwright** and **VHS**, and generates professional, high-conversion documentation.
+
+- 📟 **Automated CLI Recording**: Generate high-fidelity GIFs of your terminal sessions with VHS.
+- 🎬 **Smart Browser Capture**: Automated Playwright videos and screenshots with built-in verification.
+- 🛠️ **Workflow Automation**: One-command documentation that cleans up after itself.
 
 ## 🎬 Showcase Assets
 | 🎬 Web Demo | 📟 CLI Demo (GIF) |
