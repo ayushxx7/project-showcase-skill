@@ -19,12 +19,12 @@ This skill automates the "last mile" of development: showcasing your work to the
 - **Dependency Check (MANDATORY)**:
     - Before any capture, the agent **MUST** check if `playwright` (Python) and `vhs` (System) are installed.
     - If missing, the agent **MUST** autonomously run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`) without asking, unless explicitly restricted.
-- **Triggers**: "Set up a showcase for this project", "Analyze my UI for screenshots".
+- **Triggers**: "Showcase this project. Start the server and capture the UI.", "Set up a showcase for this project", "Analyze my UI for screenshots".
 - **Action**: Look for configuration files to determine the web server type and default ports.
 
 ### 2. Automated Capture (`scripts/capture.py` & `scripts/record_cli.tape`)
 - **Goal**: Generate and execute scripts to capture the UI or Terminal.
-- **Triggers**: "Take screenshots of my app", "Capture the UI", "Record my CLI tool".
+- **Triggers**: "Record a terminal demo of my CLI tool and add it to the README.", "Take screenshots of my app", "Capture the UI", "Record my CLI tool".
 - **Action**: 
     - **Web**: Create or update a `capture_ui.py` script. **Execute it** to generate screenshots and videos.
     - **CLI**: Create a `.tape` file for [VHS](https://github.com/charmbracelet/vhs). **Execute `vhs < your_file.tape`** to generate GIFs/MP4s.
@@ -40,6 +40,7 @@ This skill automates the "last mile" of development: showcasing your work to the
 
 ### 3. README Documentation
 - **Goal**: Build a professional README with a visual gallery.
+- **Triggers**: "Add a visual gallery to my existing README without overwriting my notes.", "Generate a README for this project".
 - **Action**: Use the templates in `references/readme_templates.md` to structure content.
 - **Preservation Policy (CRITICAL)**: 
     - **NEVER** overwrite an existing README entirely if it contains custom developer documentation.
@@ -49,7 +50,7 @@ This skill automates the "last mile" of development: showcasing your work to the
 
 ### 4. Elevator Pitch & Social Media
 - **Goal**: Summarize the project for external communication.
-- **Triggers**: "Write a LinkedIn post for this project", "Give me an elevator pitch".
+- **Triggers**: "Write a LinkedIn post and an elevator pitch for this showcase.", "Write a LinkedIn post for this project", "Give me an elevator pitch".
 - **Action**: Distill the project into 3 core value propositions, a "why it matters" statement, and a call to action.
 
 ## Bundled Resources
