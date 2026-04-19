@@ -73,12 +73,13 @@ This skill automates the "last mile" of development: showcasing your work to the
         - **Automation**: Presence of `setup.sh` or installation scripts.
         - **Showcase**: Presence of `showcase/` assets and `.tape` files.
         - **Quality (TDD)**: Presence of `tests/` directory and passing test status.
-    - **Scoring**: Assign a weighted score from **0.0 to 10.0**.
-        - Documentation (2.0 pts)
-        - Security (2.0 pts)
-        - Automation (2.0 pts)
-        - Showcase (2.0 pts)
-        - **Quality/TDD (2.0 pts)**: Presence of tests and successful execution.
+    - **Scoring**: Assign a weighted score on a **0-100+ Scale** (Bonus points allowed):
+        - **Documentation (20 pts)**: README, LICENSE, `.env.example`.
+        - **Security (20 pts)**: No leaked keys, `.env` in `.gitignore`.
+        - **Automation (20 pts)**: Working setup and install scripts.
+        - **Quality/TDD (20 pts)**: Tests present and passing.
+        - **Showcase (20 pts)**: High-res screenshots and VHS demos.
+        - **Bonus (+5-10 pts)**: GitHub Actions, multi-platform support, or interactive demos.
     - **Thoughtful Prescription**: Before fixing, the agent should present a **"Healing Plan"**:
         - List the specific missing or broken items.
         - Explain *why* they matter (e.g., "Missing LICENSE prevents open-source contribution").
