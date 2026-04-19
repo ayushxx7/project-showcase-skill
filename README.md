@@ -9,10 +9,9 @@ Automate the "last mile" of development: showcasing your work to the world.
 This skill identifies key UI and CLI components, captures them automatically using Playwright and VHS, and generates professional documentation.
 
 ## 🎬 Showcase Assets
-| 🎬 Web Demo (Video) | 📟 CLI Demo (GIF) |
+| 🎬 Web Demo | 📟 CLI Demo (GIF) |
 | :---: | :---: |
-| [View Recorded Video](showcase/videos/) | ![CLI Demo](showcase/cli_demo.gif) |
-| ![Landing](showcase/landing.png) | ![CLI State](showcase/cli_final_state.png) |
+| ![Landing](showcase/landing.png) | ![CLI Demo](showcase/cli_power_demo.gif) |
 
 ## 🛠️ Tools Used
 - **Playwright**: For high-res UI screenshots and screen recordings.

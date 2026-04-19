@@ -1,7 +1,11 @@
+# Showcase Assets
+showcase/videos/
+showcase/*.webm
+showcase/scrolled.png
+showcase/capture_ui.py
+showcase/record_cli.tape
+
+# Virtual Environments
 .venv/
-__pycache__/
-*.pyc
-.DS_Store
-# We want to keep showcase images in the repo for the README.
-# showcase/
-showcase/*.png\nshowcase/*.gif\nshowcase/*.webm\nshowcase/videos/
+.showcase_venv/
+node_modules/

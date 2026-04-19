@@ -30,6 +30,10 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **Failure Detection**: Look for 404 pages, blank screens, or `vhs` parser errors.
     - **Auto-Fix**: If a failure is detected, diagnose the cause (e.g., port mismatch, server not started, hydration lag) and **retry once** with adjusted parameters (e.g., longer `wait_for_timeout`).
     - **User Bridge**: If the second attempt fails or the "intended outcome" is ambiguous, ask the user: *"The capture shows [X], but is that what you wanted? Give me a quick prompt (e.g., 'go to /dashboard') to guide me."*
+- **Cleanup (MANDATORY)**:
+    - Once the showcase is verified and the README is updated, **delete all temporary files**.
+    - This includes temporary `.tape` files, `capture_ui.py` scripts, and redundant screenshots not used in the final README.
+    - Ensure only the final high-quality assets (e.g., `landing.png`, `demo.gif`) remain in the `showcase/` folder.
 
 ### 3. README Documentation
 - **Goal**: Build a professional README with a visual gallery.
