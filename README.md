@@ -11,6 +11,22 @@
 
 **Project Showcase Skill** is the "magic pill" for developers who hate documentation but love showing off. Automate the "last mile" of your workflow—generating high-fidelity visual galleries and surgical README updates in seconds.
 
+## 🎬 Showcase Gallery
+| 🎬 Web Showcase | 📟 CLI Power Demo (GIF) |
+| :---: | :---: |
+| ![Landing](showcase/landing.png) | ![CLI Demo](showcase/cli_power_demo.gif) |
+
+## 📊 Repo Health: 100 / 100 (Pristine)
+This project "eats its own dog food" and maintains a perfect readiness score.
+
+| Category | Item | Status | Score |
+| :--- | :--- | :--- | :--- |
+| **Documentation** | README, LICENSE, SKILL.md | ✅ Complete | 15 / 15 |
+| **Security** | Secret Scan & .gitignore | ✅ Secure | 15 / 15 |
+| **Automation** | setup.sh & Passing Tests | ✅ Working | 20 / 20 |
+| **Showcase** | High-res Assets & VHS | ✅ Verified | 20 / 20 |
+| **Distribution** | Live App & Official Release | ✅ Distributed | 30 / 30 |
+
 ## 📦 Installation in 30 Seconds
 
 ### 1. Install the Skill
@@ -47,8 +63,6 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **Smart Retries**: If the UI isn't ready, the skill waits, reloads, and fixes the capture autonomously.
 - **Video Recording**: High-res `.webm` recordings of your browser interactions.
 
-## 🎬 Showcase Gallery
-
 - **VHS Integration**: Scripted terminal sessions that "type" themselves into high-fidelity GIFs.
 - **Zero Effort**: Just tell the agent what commands to run; it generates the `.tape` and the GIF for you.
 
@@ -57,21 +71,6 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **Preserve & Merge**: It identifies your manual documentation and injects visual galleries around it.
 - **UX Audit**: Automatically places high-conversion "Live App" badges at the very top.
 - **Auto-Cleanup**: Generates the assets, updates the docs, and deletes the temporary scripts.
-
-## 📊 Repo Health: 100 / 100 (Pristine)
-This project "eats its own dog food" and maintains a perfect readiness score.
-
-| Category | Item | Status | Score |
-| :--- | :--- | :--- | :--- |
-| **Documentation** | README, LICENSE, SKILL.md | ✅ Complete | 15 / 15 |
-| **Security** | Secret Scan & .gitignore | ✅ Secure | 15 / 15 |
-| **Automation** | setup.sh & Passing Tests | ✅ Working | 20 / 20 |
-| **Showcase** | High-res Assets & VHS | ✅ Verified | 20 / 20 |
-| **Distribution** | Live App & Official Release | ✅ Distributed | 30 / 30 |
-
-| 🎬 Web Showcase | 📟 CLI Power Demo (GIF) |
-| :---: | :---: |
-| ![Landing](showcase/landing.png) | ![CLI Demo](showcase/cli_power_demo.gif) |
 
 ## 🛠️ Tech Stack
 - **Engine**: Python 3.x, Playwright (Browser Automation)

@@ -11,15 +11,16 @@ Use these structures to build high-quality project galleries and feature breakdo
    - **Primary CTA**: Place a "Live App" badge at the very top for immediate engagement.
    - Example: `[![Live App](https://img.shields.io/badge/Live_App-Click_Here_to_Explore-blue?style=for-the-badge&logo=vercel)](https://your-app-url.com)`
 2. **Elevator Pitch**: A 2-3 sentence overview of the core value.
-3. **How to Use**: 
+3. **Visual Gallery (Top Fold)**: A clean table with high-res screenshots and a high-impact `demo.gif`.
+   - Example: `![Demo Workflow](showcase/demo.gif)`
+4. **Repo Health Score**: The diagnostic readiness table.
+5. **How to Use**: 
     - **Step 1**: Installation/Clone.
     - **Step 2**: Configuration/Environment.
     - **Step 3**: Execution (The "Magic" command).
-4. **Feature Set**: Grouped by category (e.g., 🤖 AI, 📈 Analytics, 🔍 Search).
-5. **Visual Gallery**: A clean table with high-res screenshots and a high-impact `demo.gif`.
-   - Example: `![Demo Workflow](showcase/demo.gif)`
-6. **Tech Stack**: Iconography-led (React, Groq, Playwright, etc.).
-7. **License**: A clear statement of the project's license.
+6. **Feature Set**: Grouped by category (e.g., 🤖 AI, 📈 Analytics, 🔍 Search).
+7. **Tech Stack**: Iconography-led (React, Groq, Playwright, etc.).
+8. **License**: A clear statement of the project's license.
 ---
 
 ## 2. The Library/CLI Template
@@ -27,11 +28,12 @@ Use these structures to build high-quality project galleries and feature breakdo
 
 ### Structure:
 1. **Logo & Installation**: Badges + `pip install`.
-2. **Why it Exists**: "The Problem vs. The Solution".
-3. **Interactive Demo**: ASCII art, a [VHS](https://github.com/charmbracelet/vhs) GIF recording, or a `demo.gif` from `capture.py`.
+2. **Interactive Demo (Top Fold)**: ASCII art, a [VHS](https://github.com/charmbracelet/vhs) GIF recording, or a `demo.gif` from `capture.py`.
    - Example: `![CLI Demo](showcase/demo.gif)`
-4. **Usage Examples**: Code blocks for the 3 most common workflows.
-5. **API Reference**: Link to docs or a summary of key methods.
+3. **Repo Health Score**: The diagnostic readiness table.
+4. **Why it Exists**: "The Problem vs. The Solution".
+5. **Usage Examples**: Code blocks for the 3 most common workflows.
+6. **API Reference**: Link to docs or a summary of key methods.
 
 ---
 

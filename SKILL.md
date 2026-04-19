@@ -78,21 +78,23 @@ This skill automates the "last mile" of development: showcasing your work to the
     - Ensure only the final high-quality assets (e.g., `landing.png`, `demo.gif`) remain in the `showcase/` folder.
 
 ### 3. README Documentation
-- **Goal**: Build a professional README with a visual gallery.
+- **Goal**: Build a professional README that "Shows first, tells second."
 - **Triggers**: "Add a visual gallery to my existing README without overwriting my notes.", "Generate a README for this project".
 - **Action**: Use the templates in `references/readme_templates.md` to structure content.
-- **Mandatory Sections**:
+- **Mandatory Sections (Visual-First Order)**:
     - **UX Audit**: Top-level 'Live App' badges.
     - **Hero Section**: Mission statement and value prop.
-    - **Visual Gallery**: The captured Web/CLI assets.
-    - **Repo Health Score**: A diagnostic table showing the 0-10 readiness score across Documentation, Security, Automation, and Showcase categories.
+    - **Visual Gallery**: The captured Web/CLI assets (Top Fold).
+    - **Repo Health Score**: A diagnostic table showing the readiness score (Top Fold).
     - **How to Use**: Clear instructions on how to run or interact with the project.
     - **Tech Stack**: Iconography-led list of tools.
     - **License**: Clear statement of the project's open-source license.
 - **Preservation Policy**: 
     - Do not overwrite an existing README entirely if it contains custom developer documentation.
     - **Surgical Injection**: Only inject the `Showcase Assets`, `Tech Stack`, or `Visual Gallery` sections.
+    - **Top Fold Placement**: Always aim to place the Visual Gallery and Repo Health table immediately after the elevator pitch to maximize initial impact.
     - **Verify Before Commit**: Check if the user has manually written "How it Works" or "Architecture" sections and ensure these are preserved and merged, not replaced.
+
 - **UX Audit**: Ensure 'Live App' links are at the very top of the Hero section.
 
 ### 4. Professional Delivery & Release
