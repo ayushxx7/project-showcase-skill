@@ -43,6 +43,15 @@ The skill is self-configuring. On first trigger, it will autonomously set up **P
 ./scripts/setup.sh
 ```
 
+## 🪄 How to Use
+
+Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try these "magic phrases":
+
+- **For Web Apps**: *"Showcase this project. Start the server and capture the UI."*
+- **For CLI Tools**: *"Record a terminal demo of my CLI tool and add it to the README."*
+- **For Socials**: *"Write a LinkedIn post and an elevator pitch for this showcase."*
+- **For Galleries**: *"Add a visual gallery to my existing README without overwriting my notes."*
+
 ## 🎬 Showcase Gallery
 | 🎬 Web Showcase | 📟 CLI Power Demo (GIF) |
 | :---: | :---: |
