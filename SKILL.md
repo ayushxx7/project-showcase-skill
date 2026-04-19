@@ -37,12 +37,17 @@ This skill automates the "last mile" of development: showcasing your work to the
     - Once the showcase is verified and the README is updated, **delete all temporary files**.
     - This includes temporary `.tape` files, `capture_ui.py` scripts, and redundant screenshots not used in the final README.
     - Ensure only the final high-quality assets (e.g., `landing.png`, `demo.gif`) remain in the `showcase/` folder.
-
 ### 3. README Documentation
 - **Goal**: Build a professional README with a visual gallery.
-- **Triggers**: "Add a visual gallery to my existing README without overwriting my notes.", "Generate a README for this project".
 - **Action**: Use the templates in `references/readme_templates.md` to structure content.
+- **Mandatory Sections**:
+    - **UX Audit**: Top-level 'Live App' badges.
+    - **Hero Section**: Mission statement and value prop.
+    - **Visual Gallery**: The captured Web/CLI assets.
+    - **How to Use**: Clear instructions on how to run or interact with the project.
+    - **Tech Stack**: Iconography-led list of tools.
 - **Preservation Policy (CRITICAL)**: 
+...
     - **NEVER** overwrite an existing README entirely if it contains custom developer documentation.
     - **Surgical Injection**: Only inject the `Showcase Assets`, `Tech Stack`, or `Visual Gallery` sections.
     - **Verify Before Commit**: Always check if the user has manually written "How it Works" or "Architecture" sections and ensure these are **preserved and merged**, not replaced.

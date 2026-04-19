@@ -1,6 +1,7 @@
 # README Showcase Templates
 
 Use these structures to build high-quality project galleries and feature breakdowns.
+---
 
 ## 1. The Professional Dashboard Template
 *Best for: Streamlit, React, or Analytics projects.*
@@ -10,11 +11,13 @@ Use these structures to build high-quality project galleries and feature breakdo
    - **Primary CTA**: Place a "Live App" badge at the very top for immediate engagement.
    - Example: `[![Live App](https://img.shields.io/badge/Live_App-Click_Here_to_Explore-blue?style=for-the-badge&logo=vercel)](https://your-app-url.com)`
 2. **Elevator Pitch**: A 2-3 sentence overview of the core value.
-3. **Feature Set**: Grouped by category (e.g., 🤖 AI, 📈 Analytics, 🔍 Search).
-4. **UI Gallery**: A clean table with high-res screenshots.
-5. **Quick Start**: 1. Clone, 2. Env, 3. Run.
+3. **How to Use**: 
+    - **Step 1**: Installation/Clone.
+    - **Step 2**: Configuration/Environment.
+    - **Step 3**: Execution (The "Magic" command).
+4. **Feature Set**: Grouped by category (e.g., 🤖 AI, 📈 Analytics, 🔍 Search).
+5. **UI Gallery**: A clean table with high-res screenshots.
 6. **Tech Stack**: Iconography-led (React, Groq, Playwright, etc.).
-
 ---
 
 ## 2. The Library/CLI Template
