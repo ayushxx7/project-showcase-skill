@@ -31,7 +31,6 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **For Web Apps**: *"Showcase this project. Start the server and capture the UI."*
 - **For Repo Health**: *"Audit this project. What is my readiness score?"*
 - **For CLI Tools**: *"Record a terminal demo of my CLI tool and add it to the README."*
-...
 - **For Socials**: *"Write a LinkedIn post and a Reddit thread for this showcase."*
 - **For Galleries**: *"Add a visual gallery to my existing README without overwriting my notes."*
 
@@ -48,16 +47,6 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **Smart Retries**: If the UI isn't ready, the skill waits, reloads, and fixes the capture autonomously.
 - **Video Recording**: High-res `.webm` recordings of your browser interactions.
 
-## 🩺 Repo Health Score: 100/100 (Alpha Ready)
-
-| Category | Score | Status |
-| :--- | :---: | :--- |
-| **Documentation** | 20/20 | README, LICENSE, SKILL.md, .env.example |
-| **Security** | 20/20 | No leaked keys, .env in .gitignore |
-| **Automation** | 20/20 | Working setup and install scripts |
-| **Quality/TDD** | 20/20 | 100% test coverage for injection logic |
-| **Showcase** | 20/20 | High-res screenshots and VHS demos |
-
 ## 🎬 Showcase Gallery
 
 - **VHS Integration**: Scripted terminal sessions that "type" themselves into high-fidelity GIFs.
@@ -69,18 +58,17 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **UX Audit**: Automatically places high-conversion "Live App" badges at the very top.
 - **Auto-Cleanup**: Generates the assets, updates the docs, and deletes the temporary scripts.
 
-## 📊 Repo Health: 100 / 100 (Pristine)
+## 📊 Repo Health: 100 / 100 (Alpha Ready)
 This project "eats its own dog food" and maintains a perfect readiness score.
 
 | Category | Item | Status | Score |
 | :--- | :--- | :--- | :--- |
-| **Documentation** | README, LICENSE, .env.example | ✅ Complete | 20 / 20 |
+| **Documentation** | README, LICENSE, SKILL.md, .env.example | ✅ Complete | 20 / 20 |
 | **Security** | Secret Scan & .gitignore | ✅ Secure | 20 / 20 |
 | **Automation** | setup.sh & skills.sh | ✅ Working | 20 / 20 |
-| **Quality/TDD** | `tests/` Suite | ✅ Passing | 20 / 20 |
+| **Quality/TDD** | `tests/` Suite (Passing) | ✅ Passing | 20 / 20 |
 | **Showcase** | High-res Assets & VHS | ✅ Verified | 20 / 20 |
 
-## 🎬 Showcase Gallery
 | 🎬 Web Showcase | 📟 CLI Power Demo (GIF) |
 | :---: | :---: |
 | ![Landing](showcase/landing.png) | ![CLI Demo](showcase/cli_power_demo.gif) |
@@ -96,13 +84,3 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 *Built with ❤️ for Vibe Coders everywhere. Stop documenting. Start showcasing.*
-
-neric)
-- **Design**: Shields.io for modern CTA badges
-
-## 📜 License
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-*Built with ❤️ for Vibe Coders everywhere. Stop documenting. Start showcasing.*
-
