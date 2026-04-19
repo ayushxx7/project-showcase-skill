@@ -36,11 +36,15 @@ Once installed, just talk to your agent (Gemini or Claude) in the terminal. Try 
 - **For Galleries**: *"Add a visual gallery to my existing README without overwriting my notes."*
 
 ## ✨ The Magic Features
-### 🎬 Self-Healing Web Capture
+### 🎬 Professional UI Capture (`scripts/capture.py`)
+- **📱 Responsive Ready**: Desktop, Tablet, and Mobile viewports in one go.
+- **🖼️ Full-Page Screenshots**: Automatically scroll and stitch the entire page.
+- **🎭 Visual Privacy**: Mask sensitive data (like API keys or emails) using CSS selectors.
+- **🌙 Dark Mode Support**: Capture your UI in both light and dark themes.
+- **⚡ Network-Aware**: Waits for `networkidle` to ensure your app is fully hydrated.
 - **Privacy-First Security Scan**: Automatically detects and warns about sensitive API keys (OpenAI, Anthropic, etc.) or `.env` leaks before capture.
 - **Repo Health & Healing (0-10 Audit)**: Let your "Project Resident Doctor" scan your repo for missing licenses, documentation gaps, and security risks. It assigns a **Health Score** and offers a **Surgical Healing Plan** to get you to 10/10 readiness.
 - **Auto-Verification**: Detects 404s, blank screens, and hydration lag.
-...
 - **Smart Retries**: If the UI isn't ready, the skill waits, reloads, and fixes the capture autonomously.
 - **Video Recording**: High-res `.webm` recordings of your browser interactions.
 

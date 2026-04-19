@@ -24,6 +24,9 @@ This skill automates the "last mile" of development: showcasing your work to the
     - Check if the project has a `LICENSE` file.
     - If missing, inform the user: *"Your project is missing a LICENSE. Adding one makes it officially open-source and accessible."*
     - Propose adding an MIT License as a default, but allow the user to provide a different license type.
+- **GitHub Discoverability**:
+    - The agent should scan the tech stack and project purpose.
+    - Propose and apply GitHub Topics (labels) using `gh repo edit --add-topic` to improve searchability.
 - **Dependency Check**:
     - Before any capture, the agent should check if `playwright` (Python) and `vhs` (System) are installed.
     - If missing, the agent should run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`) to ensure the environment is ready.
