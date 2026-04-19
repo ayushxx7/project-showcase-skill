@@ -15,9 +15,9 @@ This skill automates the "last mile" of development: showcasing your work to the
 ## Core Workflows
 ### 1. Initial Analysis & Auto-Setup
 - **Goal**: Identify project type and ensure the environment is ready.
-- **Security & Privacy Scan (MANDATORY)**:
-    - Before any capture, the agent **MUST** scan the project for common API key patterns (OpenAI, Anthropic, Google, AWS, etc.).
-    - If secrets are found in the source code or `.env` files, the agent **MUST** warn the user and propose adding them to `.gitignore`.
+- **Security & Privacy Scan**:
+    - Before any capture, the agent should scan the project for common API key patterns (OpenAI, Anthropic, Google, AWS, etc.).
+    - If secrets are found in the source code or `.env` files, the agent should warn the user and propose adding them to `.gitignore`.
     - **Visual Privacy**: During UI capture, ensure no sensitive keys are visible in the rendered UI. If detected, the agent should blur or mask them before saving the screenshot.
 - **License Verification**:
 ...
