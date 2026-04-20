@@ -29,9 +29,10 @@ This skill automates the "last mile" of development: showcasing your work to the
     - Check if the project has a `LICENSE` file.
     - If missing, inform the user: *"Your project is missing a LICENSE. Adding one makes it officially open-source and accessible."*
     - Propose adding an MIT License as a default, but allow the user to provide a different license type.
-- **GitHub Discoverability (Labels)**:
+- **GitHub Discoverability (Metadata)**:
     - Always scan the `requirements.txt`, `package.json`, and project structure to identify the tech stack.
-    - Propose and apply GitHub Topics using a single comma-separated command: `gh repo edit --add-topic "topic1,topic2,topic3"`.
+    - **Topics**: Propose and apply GitHub Topics using a single comma-separated command: `gh repo edit --add-topic "topic1,topic2,topic3"`.
+    - **Description**: Automatically generate a high-impact GitHub description (max 160 chars) from the README elevator pitch and apply it using `gh repo edit --description "Your description"`.
     - **Priority Topics**: Include the framework (e.g., `streamlit`, `react`), database (e.g., `neondb`, `mongodb`), and core feature (e.g., `ai-agent`, `scraper`).
 - **Dependency Check**:
     - Before any capture, the agent should check if `playwright` (Python), `vhs` (System), and `ffmpeg` (for Video-to-GIF) are installed.
@@ -150,6 +151,7 @@ This skill automates the "last mile" of development: showcasing your work to the
 ## Bundled Resources
 
 - **`scripts/capture.py`**: A generalized Playwright template that can be customized for different frameworks.
+- **`scripts/manage_metadata.py`**: A utility to automatically detect and apply GitHub topics and repository descriptions.
 - **`references/readme_templates.md`**: A collection of high-converting README structures.
 
 ## Mandatory Execution Checklist
@@ -164,7 +166,7 @@ Before finalizing any showcase or delivery, the agent MUST go through this check
 - [ ] **Assets**: Clean-cut GIF and high-res screenshots generated?
 - [ ] **Audit**: Visual verification performed against intended flow?
 - [ ] **Documentation**: README surgically updated with Visual Gallery and Repo Health Score?
-- [ ] **Discoverability**: GitHub Topics applied via `gh repo edit`?
+- [ ] **Discoverability**: GitHub Topics and High-Impact Description applied via `gh repo edit`?
 - [ ] **Release**: vX.Y.Z Release created with `--notes-file` and verified via URL?
 - [ ] **Distribution**: Live App link confirmed at top of README and Release active?
 - [ ] **Final Audit**: Live Repository visually verified via screenshot (README, Badges, Release)?
