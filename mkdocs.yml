@@ -1,0 +1,65 @@
+site_name: Project Showcase Skill
+site_description: The Magic Pill for Shipping Professional Project Showcases
+site_author: ayushxx7
+repo_url: https://github.com/ayushxx7/project-showcase-skill
+repo_name: ayushxx7/project-showcase-skill
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Prerequisites: getting-started/prerequisites.md
+  - Core Skills:
+    - Project Showcase: skills/project-showcase.md
+    - LinkedIn Magic: skills/linkedin-magic.md
+  - Scripts & Tools:
+    - Overview: scripts/overview.md
+    - UI Capture: scripts/capture.md
+    - CLI Recording: scripts/vhs.md
+  - Guides:
+    - README Customization: guides/readme-customization.md
+    - Responsive Capture: guides/responsive-capture.md
+    - Security & Privacy: guides/security.md
+  - About:
+    - License: about/license.md
+    - Contributing: about/contributing.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true

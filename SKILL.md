@@ -7,174 +7,92 @@ description: "Automate the creation of high-quality project showcases, including
 
 This skill automates the "last mile" of development: showcasing your work to the world. It identifies key UI components, captures them automatically, and generates professional documentation.
 
-## Prerequisites
-- **Web Recording**: `playwright` (Python/JS). Run `playwright install chromium`.
-- **Terminal Recording (macOS/Linux)**: [VHS](https://github.com/charmbracelet/vhs). Install via `brew install vhs`. 
-    - *Note*: Terminal recording is currently optimized for Unix-like environments.
+## Commands
+- `/showcase`: **The Magic Pill** (Default). Runs UI Capture + Terminal Record + README Update + GitHub Release + Metadata (About/Labels).
+- `/select`: Opens an interactive UI to select specific features to run.
+- `/capture`: Trigger high-fidelity UI captures using Playwright.
+- `/record`: Record a terminal demo using VHS.
+- `/audit`: Perform a Repo Health Audit (Scoring & Healing Plan).
+- `/readme`: Surgically update the README with visual galleries and badges.
+- `/release`: Create an official GitHub Release (v0.1.0-alpha).
+- `/metadata`: Auto-detect and update GitHub "About" and "Topics".
+- `/socials`: Generate ready-to-post content for LinkedIn and Reddit.
+- `/scan`: Run a privacy-first security scan for secrets and `.env` leaks.
+- `/license`: Verify or add an MIT License.
+- `/setup`: Ensure all dependencies (Playwright, VHS, ffmpeg) are installed.
 
 ## Core Workflows
 ### 1. Initial Analysis & Auto-Setup
 - **Goal**: Identify project type and ensure the environment is ready.
+- **Autonomous Asset Generation**:
+    - If UI captures or Terminal recordings are missing, the agent **MUST NOT** skip them or leave broken links.
+    - **Step 1**: Attempt real capture via Playwright/VHS.
+    - **Step 2**: If Step 1 fails, generate a high-fidelity "Visual Architecture" diagram or a stylized SVG that represents the project's logic.
+    - **Outcome**: Every showcased repo MUST have a visual element, real or generated.
 - **Framework Detection & Secret Management**:
     - **Streamlit Projects**: Detect via `streamlit_app.py` or `streamlit` in `requirements.txt`.
     - **Secret Migration**: If detected, propose migrating `.env` keys to `.streamlit/secrets.toml` to align with Streamlit Cloud standards.
-    - **Cloud Readiness**: Provide instructions for the user to update their Cloud Dashboard secrets after migration.
-- **TOML Support**: Prefer `.toml` (e.g., `pyproject.toml`, `secrets.toml`) for configuration in modern frameworks, while maintaining fallback support for `.env`.
-- **Security & Privacy Scan**:
+- **Security & Privacy Scan (`/scan`)**:
     - Before any capture, the agent should scan the project for common API key patterns (OpenAI, Anthropic, Google, AWS, etc.).
     - If secrets are found in the source code or `.env` files, the agent should warn the user and propose adding them to `.gitignore`.
-    - **Visual Privacy**: During UI capture, ensure no sensitive keys are visible in the rendered UI. If detected, the agent should blur or mask them before saving the screenshot.
-- **License Verification**:
-...
-    - Check if the project has a `LICENSE` file.
-    - If missing, inform the user: *"Your project is missing a LICENSE. Adding one makes it officially open-source and accessible."*
-    - Propose adding an MIT License as a default, but allow the user to provide a different license type.
-- **GitHub Discoverability (Metadata)**:
-    - Always scan the `requirements.txt`, `package.json`, and project structure to identify the tech stack.
-    - **Topics**: Propose and apply GitHub Topics using a single comma-separated command: `gh repo edit --add-topic "topic1,topic2,topic3"`.
-    - **Description**: Automatically generate a high-impact GitHub description (max 160 chars) from the README elevator pitch and apply it using `gh repo edit --description "Your description"`.
-    - **Priority Topics**: Include the framework (e.g., `streamlit`, `react`), database (e.g., `neondb`, `mongodb`), and core feature (e.g., `ai-agent`, `scraper`).
-- **Dependency Check**:
-    - Before any capture, the agent should check if `playwright` (Python), `vhs` (System), and `ffmpeg` (for Video-to-GIF) are installed.
-    - If missing, the agent should run `./scripts/setup.sh` or the equivalent commands (`pip install playwright`, `brew install vhs`, `brew install ffmpeg`) to ensure the environment is ready.
-- **Triggers**: "Showcase this project. Start the server and capture the UI.", "Set up a showcase for this project", "Analyze my UI for screenshots".
-- **Action**: Look for configuration files to determine the web server type and default ports.
+- **License Verification (`/license`)**:
+    - Check if the project has a `LICENSE` file. If missing, propose adding an MIT License.
+- **Dependency Check (`/setup`)**:
+    - Before any capture, the agent should check if `playwright` (Python), `vhs` (System), and `ffmpeg` are installed.
 
-### 2. Automated Capture (`scripts/capture.py` & `scripts/record_cli.tape`)
-- **Goal**: Generate and execute scripts to capture the UI or Terminal with surgical precision.
-- **Safety & Precision Protocols**:
-    - **Protocol 1: Selector Discovery Phase**: 
-        - Before interaction, the agent MUST list all interactive labels, placeholders, and buttons on the page.
-        - Use this to distinguish between similar elements (e.g., search bars vs. filters) to avoid "blind guessing."
-    - **Protocol 2: Two-Phase Hydration**: 
-        - **Pre-load Phase**: Navigate to the URL and wait for a "Stable State" (e.g., specific H1 appearance or removal of loading spinners).
-        - **Recording Phase**: Start video recording ONLY after the app is confirmed to be interactive.
-    - **Protocol 3: Automated Video Post-Processing (The "Clean Cut")**:
-        - Use `ffmpeg` to trim the start of recordings (e.g., `-ss 2`) to remove residual loading frames.
-        - Optimize the GIF palette for high-clarity/low-filesize to ensure README performance.
-    - **Protocol 4: Visual Audit & Verification**:
-        - After generation, the agent MUST perform a "Verification Step."
-        - Describe the intended flow and confirm the logs show the exact selectors used matched that intent.
-        - If a fallback selector was used, re-verify if the intended element was missed.
-- **Rich Media & Video-to-GIF**: 
-    - Support video recording via Playwright (`record_video_dir`).
-    - Use `ffmpeg` to transform `.webm` recordings into optimized `.gif` files for GitHub README compatibility.
-    - Target `demo.gif` for the visual gallery.
-- **Hydration-Aware Captures**: 
-    - Include configurable "hydration delays" (e.g., 10-20 seconds) for JS-heavy frameworks like Streamlit or Dash to ensure the UI is fully interactive before taking screenshots.
-- **Comparative Demonstration (A/B Mode)**:
-    - Perform a default action (e.g., a standard search), capture it, toggle a feature (e.g., enable "AI Assistant"), and capture the improved result in a single continuous flow to demonstrate the value proposition.
-- **Triggers**: "Record a terminal demo of my CLI tool and add it to the README.", "Take screenshots of my app", "Capture the UI", "Record my CLI tool", "Create an A/B demo".
-- **Action**: 
-    - **Web**: Create or update a `capture_ui.py` script. Execute it to generate screenshots and videos.
-    - **CLI**: Create a `.tape` file for [VHS](https://github.com/charmbracelet/vhs). Execute `vhs < your_file.tape` to generate GIFs/MP4s.
+### 2. Automated Capture (`/capture`, `/record`)
+- **UI Capture**: Uses `scripts/capture.py`. Supports responsive, full-page, masking, and dark mode.
+- **Terminal Record**: Uses `scripts/record_cli.tape` and VHS.
 - **Verification & Auto-Fix**:
     - After capture, inspect the generated assets. 
     - **Failure Detection**: Look for 404 pages, blank screens, or `vhs` parser errors.
-    - **Auto-Fix**: If a failure is detected, diagnose the cause (e.g., port mismatch, server not started, hydration lag) and retry once with adjusted parameters (e.g., longer `wait_for_timeout`).
-    - **User Bridge**: If the second attempt fails or the "intended outcome" is ambiguous, ask the user: *"The capture shows [X], but is that what you wanted? Give me a quick prompt (e.g., 'go to /dashboard') to guide me."*
 - **Cleanup**:
     - Once the showcase is verified and the README is updated, delete all temporary files.
-    - This includes temporary `.tape` files, `capture_ui.py` scripts, and redundant screenshots not used in the final README.
     - Ensure only the final high-quality assets (e.g., `landing.png`, `demo.gif`) remain in the `showcase/` folder.
 
-### 3. README Documentation
+### 3. README Documentation & Hygiene (`/readme`)
 - **Goal**: Build a professional README that "Shows first, tells second."
-- **Triggers**: "Add a visual gallery to my existing README without overwriting my notes.", "Generate a README for this project".
-- **Action**: Use the templates in `references/readme_templates.md` to structure content.
-- **Mandatory Sections (Visual-First Order)**:
-    - **UX Audit**: Top-level 'Live App' badges.
-    - **Hero Section**: Mission statement and value prop.
-    - **Visual Gallery**: The captured Web/CLI assets (Top Fold).
-    - **Repo Health Score**: A diagnostic table showing the readiness score (Top Fold).
-    - **How to Use**: Clear instructions on how to run or interact with the project.
-    - **Tech Stack**: Iconography-led list of tools.
-    - **License**: Clear statement of the project's open-source license.
-- **Preservation Policy**: 
-    - Do not overwrite an existing README entirely if it contains custom developer documentation.
-    - **Surgical Injection**: Only inject the `Showcase Assets`, `Tech Stack`, or `Visual Gallery` sections.
-    - **Top Fold Placement**: Always aim to place the Visual Gallery and Repo Health table immediately after the elevator pitch to maximize initial impact.
-    - **Verify Before Commit**: Check if the user has manually written "How it Works" or "Architecture" sections and ensure these are preserved and merged, not replaced.
+- **Asset Integrity**: 
+    - **NEVER** include broken image links or placeholders (like `landing.png` if it doesn't exist). 
+    - If a real capture is impossible, the agent **MUST** generate a high-fidelity alternative (e.g., a Mermaid diagram).
+- **The "Vibe-First" README**:
+    - **Remove the Health Table**: The diagnostic table is distracting. Move the full, detailed audit to a separate `REPO_HEALTH.md` file.
+    - **High-Impact Keywords**: In the README, replace the table with a single line of high-trust keywords (e.g., `✅ Secure | ✅ Verified Demo | ✅ Documentation Complete`) only if the health score is >90.
+    - **Placement**: If the project isn't perfect, keep all "health" mentions at the very bottom of the `REPO_HEALTH.md` file.
+- **Surgical Injection & Deduplication**:
+    - **Never Duplicate**: If a section already exists (e.g., "Architecture", "Features", "Installation"), the agent **MUST NOT** add a second version.
+    - **Superiority Choice**: Compare existing content with generated content. If the generated version is better (clearer, more visual), **replace** the old one.
+    - **Hybrid Merge**: If both contain unique value, merge them into a single cohesive section.
+    - **Zero Redundancy**: A single, streamlined source of truth for every project aspect. No redundant headers.
+- **Top Fold Placement**: Always aim to place the Visual Gallery immediately after the elevator pitch to maximize initial impact.
 
-- **UX Audit**: Ensure 'Live App' links are at the very top of the Hero section.
-
-### 4. Professional Delivery & Release
-- **Goal**: Package the project for official discovery and distribution.
-- **Professional GitHub Release**:
+### 4. Professional Delivery & Release (`/release`, `/metadata`)
+- **Goal**: Package the project for official distribution.
+- **Professional GitHub Release (`/release`)**:
     - Create an automated **Release (e.g., v0.1.0-alpha/beta/stable)** upon completion of the showcase.
-    - **Title Format**: `vX.Y.Z-[stage]: [High-Impact Feature Name]`.
-    - **Notes Preparation**: NEVER pass notes as raw strings with `\n` to the CLI. Always create a temporary `release_notes.md` and use `gh release create <tag> --notes-file release_notes.md`.
-    - **Release Structure**:
-        - 🚀 **Live App**: Prominent link at the very top.
-        - 🌟 **Highlights**: Bulleted list of core value propositions (AI features, DB integration, Security, etc.).
-        - 🛠️ **Tech Stack**: Brief mention of the engines used.
+- **GitHub Metadata (`/metadata`)**:
+    - Detect and update the "About" description and "Topics" (labels) using `scripts/manage_metadata.py`.
 - **Verification & Validation**:
-    - **URL Check**: Verify the release formatting by checking the output URL.
     - **Live Repository Audit**: 
-        - Before finalizing, use the `capture.py` script or Playwright to take a screenshot of the **actual GitHub Repository URL**.
-        - Visually confirm that the **README**, **Badges**, **Visual Gallery**, and **GitHub Topics** are rendered correctly on the live site.
-        - Ensure the **Release** is visible in the sidebar and associated with the correct tag.
+        - Before finalizing, visually confirm that the **README**, **Badges**, **Visual Gallery**, and **GitHub Topics** are rendered correctly.
     - **Clean State**: If a force-push was required to clean secrets, ensure the release is re-associated with the latest clean commit hash.
 
-### 5. Repo Health & Healing (Audit & Fix)
+### 5. Repo Health & Healing (`/audit`)
 - **Goal**: Diagnose the project's "Readiness" and offer surgical improvements.
-- **Triggers**: "Audit this repository", "How healthy is my project?", "Heal this repo".
-- **Action**:
-    - **Diagnosis**: Perform a scan for:
-        - **Documentation**: README, LICENSE, `.env.example`.
-        - **Security**: Leaked API keys, un-ignored `.env` files.
-        - **Automation/Quality**: Setup scripts and passing tests.
-        - **Showcase**: High-res screenshots and VHS demos.
-        - **Distribution**: Live App links and official GitHub Release activity.
-    - **Scoring**: Assign a weighted score on a **0-100 Scale**:
-        - **Documentation & Licensing (15 pts)**: README, LICENSE, `.env.example`.
-        - **Security (15 pts)**: No leaked keys, `.env` in `.gitignore`.
-        - **Automation & Quality (20 pts)**: Working setup scripts and passing tests.
-        - **Showcase (20 pts)**: High-res screenshots and VHS demos.
-        - **Distribution (30 pts)**: Live App link at top of README and official GitHub Release history.
-    - **Thoughtful Prescription**: Before fixing, the agent should present a **"Healing Plan"**:
-        - List the specific missing or broken items.
-        - Explain *why* they matter (e.g., "Missing LICENSE prevents open-source contribution").
-        - Describe exactly what files will be created or modified.
-    - **The Heal**: Only after user approval, apply the fixes surgically and re-audit to show the improved score.
+- **Scoring**: Assign a weighted score on a **0-100 Scale**.
+- **Thoughtful Prescription**: Before fixing, the agent should present a **"Healing Plan"**.
+- **The Heal**: Only after user approval, apply the fixes surgically and re-audit to show the improved score.
 
-### 6. Elevator Pitch & Social Media
+### 6. Social Media & PR (`/socials`)
 - **Goal**: Summarize the project for external communication.
-- **Triggers**: "Write a LinkedIn post and an elevator pitch for this showcase.", "Write a Reddit post for this project", "Give me an elevator pitch".
-- **Action**: Distill the project into 3 core value propositions, a "why it matters" statement, and a call to action.
 - **Formats**:
     - **LinkedIn**: Professional, value-driven, and badge-focused.
-    - **Reddit**: Technical, developer-to-developer, and GIF-centric (targeting `r/webdev`, `r/programming`).
-    - **Elevator Pitch**: A 30-second high-impact verbal summary.
-
-## Bundled Resources
-## Bundled Resources
-
-- **`scripts/capture.py`**: A generalized Playwright template that can be customized for different frameworks.
-- **`scripts/manage_metadata.py`**: A utility to automatically detect and apply GitHub topics and repository descriptions.
-- **`references/readme_templates.md`**: A collection of high-converting README structures.
-
-## Mandatory Execution Checklist
-Before finalizing any showcase or delivery, the agent MUST go through this checklist one-by-one to verify completion:
-
-- [ ] **Analysis**: Framework detected (Streamlit/React/etc.) and Secrets scanned?
-- [ ] **Security**: `.env` migrated/ignored and UI masks applied?
-- [ ] **Licensing**: LICENSE file present and MIT (or other) proposed if missing?
-- [ ] **Quality (TDD)**: Tests present and passing (verified via `pytest` or equivalent)?
-- [ ] **Environment**: `setup.sh` run and all dependencies (Playwright, VHS, ffmpeg) verified?
-- [ ] **Capture**: Selector Discovery performed and Stability confirmed?
-- [ ] **Assets**: Clean-cut GIF and high-res screenshots generated?
-- [ ] **Audit**: Visual verification performed against intended flow?
-- [ ] **Documentation**: README surgically updated with Visual Gallery and Repo Health Score?
-- [ ] **Discoverability**: GitHub Topics and High-Impact Description applied via `gh repo edit`?
-- [ ] **Release**: vX.Y.Z Release created with `--notes-file` and verified via URL?
-- [ ] **Distribution**: Live App link confirmed at top of README and Release active?
-- [ ] **Final Audit**: Live Repository visually verified via screenshot (README, Badges, Release)?
-
-*Note: All items have equal priority and must be completed unless explicitly confirmed as out of scope.*
+    - **Reddit**: Technical, developer-to-developer, and GIF-centric.
 
 ## Best Practices
-- **Wait for Load**: Always include `page.wait_for_selector()` or `time.sleep()` to ensure charts and LLM responses are fully rendered.
-- **Verified Quality**: After performing surgical README updates, the agent should run `python3 tests/test_readme_injection.py` to confirm the injection logic is still sound.
-- **Responsive Captures**: Take screenshots at multiple resolutions (Desktop: 1440x900, Mobile: 375x812).
-- **Clean Environment**: Ensure no sensitive data (keys, personal info) is visible in the screenshots.
+- **Wait for Load**: Always include `page.wait_for_selector()` or `time.sleep()` to ensure charts and LLM responses are rendered.
+- **Verified Quality**: Run `python3 tests/test_readme_injection.py` to confirm the injection logic is still sound.
+- **Documentation Hygiene**: Never sacrifice README beauty for diagnostic data. Keep the README for the "Vibe" and move the "Audit" to `REPO_HEALTH.md`.
+
+---
+*Built with ❤️ for Vibe Coders everywhere.*
