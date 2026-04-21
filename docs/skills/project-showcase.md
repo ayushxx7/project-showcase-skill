@@ -12,7 +12,11 @@ This skill automates the "last mile" of development: showcasing your work to the
 ### 2. Automated Capture
 - **Web UI**: Executes `scripts/capture.py` to capture screenshots and videos.
 - **Terminal CLI**: Executes `scripts/record_cli.tape` using VHS to record terminal sessions.
-- **Verification**: Inspects assets for 404s, blank screens, or recording errors.
+- **Verification & Auto-Fix**: Inspects assets for 404s, blank screens, or recording errors. If a failure is detected, it diagnoses the cause (e.g., port mismatch, hydration lag) and retries once with adjusted parameters.
+
+### 3. GitHub Discoverability
+- **Topics**: The skill scans your tech stack and purpose to suggest relevant GitHub Topics.
+- **Automation**: Uses `gh repo edit --add-topic` to improve your project's searchability on GitHub.
 
 ### 3. README Documentation & Hygiene
 - **Vibe-First README**: Prioritizes "Showing" over "Telling."

@@ -6,9 +6,10 @@
 
 - **📱 Responsive Viewports**: Automatically captures Desktop (1920x1080), Tablet (768x1024), and Mobile (375x667) screenshots.
 - **🖼️ Full-Page Stitches**: Intelligently scrolls and stitches the entire page for long landing pages.
-- **🎭 Element Masking**: Uses CSS selectors to hide sensitive data (emails, API keys, etc.) before taking the shot.
+- **🎭 Visual Privacy**: Automatically detects and masks/blurs sensitive data (like API keys or emails) even if selectors aren't explicitly provided.
 - **🌙 Theme Switching**: If supported by the app, it can trigger dark/light mode for comparative captures.
 - **⚡ Hydration Awareness**: Waits for `networkidle` and specific selectors to ensure the UI is fully loaded.
+- **🔧 Auto-Fix & Retry**: If the initial capture fails (e.g., 404 or blank screen), the script diagnoses issues like port mismatches and retries with optimized settings.
 - **🎥 Video Recording**: Optionally records a `.webm` video of interactions (scrolling, clicking).
 
 ## Usage
