@@ -71,6 +71,9 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **Hybrid Merge**: If both contain unique value, merge them into a single cohesive section.
     - **Zero Redundancy**: A single, streamlined source of truth for every project aspect. No redundant headers.
 - **Top Fold Placement**: Always aim to place the Visual Gallery immediately after the elevator pitch to maximize initial impact.
+- **Agentic Badges**: 
+    - **"Tested on Gemini CLI"**: This badge MUST ONLY be applied to agentic projects (e.g., Skills, MCP Servers, Agent-specific tools). 
+    - **DO NOT** add this badge to general web apps, CLIs, or libraries that are not specifically built for or tested as AI agent extensions.
 
 ### 4. Professional Delivery & Release (`/release`, `/metadata`)
 - **Goal**: Package the project for official distribution.
