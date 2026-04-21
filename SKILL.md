@@ -52,6 +52,10 @@ This skill automates the "last mile" of development: showcasing your work to the
 
 ### 3. README Documentation & Hygiene (`/readme`)
 - **Goal**: Build a professional README that "Shows first, tells second."
+- **Read the Docs (Optional / Non-UI Focus)**:
+    - **Detection**: If the project is a CLI tool, library, or back-end API (non-UI), the agent SHOULD suggest setting up "Read the Docs" using MkDocs.
+    - **Action**: Propose creating a basic `mkdocs.yml` and `docs/` structure.
+    - **User Choice**: Always ask: *"Since this is a [CLI/Library], would you like me to set up a 'Read the Docs' style documentation site as well?"*
 - **Asset Integrity**: 
     - **NEVER** include broken image links or placeholders (like `landing.png` if it doesn't exist). 
     - If a real capture is impossible, the agent **MUST** generate a high-fidelity alternative (e.g., a Mermaid diagram).
@@ -82,6 +86,12 @@ This skill automates the "last mile" of development: showcasing your work to the
 ### 5. Repo Health & Healing (`/audit`)
 - **Goal**: Diagnose the project's "Readiness" and offer surgical improvements.
 - **Scoring**: Assign a weighted score on a **0-100 Scale**.
+- **Checklist Items**:
+    - Documentation (README, LICENSE).
+    - Security (Secrets, `.gitignore`).
+    - Automation (`setup.sh`, Tests).
+    - Showcase (Screenshots, VHS).
+    - **Bonus (+5 pts)**: Extended Documentation (MkDocs/Read the Docs) - *Especially recommended for non-UI apps*.
 - **Thoughtful Prescription**: Before fixing, the agent should present a **"Healing Plan"**.
 - **The Heal**: Only after user approval, apply the fixes surgically and re-audit to show the improved score.
 
