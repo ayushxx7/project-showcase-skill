@@ -56,9 +56,11 @@ This skill automates the "last mile" of development: showcasing your work to the
     - **NEVER** include broken image links or placeholders (like `landing.png` if it doesn't exist). 
     - If a real capture is impossible, the agent **MUST** generate a high-fidelity alternative (e.g., a Mermaid diagram).
 - **The "Vibe-First" README**:
-    - **Remove the Health Table**: The diagnostic table is distracting. Move the full, detailed audit to a separate `REPO_HEALTH.md` file.
-    - **High-Impact Keywords**: In the README, replace the table with a single line of high-trust keywords (e.g., `✅ Secure | ✅ Verified Demo | ✅ Documentation Complete`) only if the health score is >90.
-    - **Placement**: If the project isn't perfect, keep all "health" mentions at the very bottom of the `REPO_HEALTH.md` file.
+    - **No Metadata Bloat**: Remove the diagnostic health table and the checkmark/percentage lines (e.g., `✅ Secure | ✅ 92/100`). These feel robotic and cluttered.
+    - **Natural Context Sentence**: Instead of keywords, generate a single, high-signal sentence that naturally blends the project's essence, tech stack, and purpose. 
+        - *Example*: "A privacy-first AI agent built with React and TypeScript for automated UI auditing."
+        - *Rule*: This sentence should feel like a human-written subtitle, not an audit report.
+    - **External Health Audit**: All detailed scoring, health tables, and diagnostic data MUST be moved to a dedicated external repository/file (e.g., `ayush-repos-health`) or kept at the very bottom of a separate `REPO_HEALTH.md`. The main README remains focused strictly on the product and the "Vibe".
 - **Surgical Injection & Deduplication**:
     - **Never Duplicate**: If a section already exists (e.g., "Architecture", "Features", "Installation"), the agent **MUST NOT** add a second version.
     - **Superiority Choice**: Compare existing content with generated content. If the generated version is better (clearer, more visual), **replace** the old one.
