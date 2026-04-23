@@ -13,6 +13,13 @@ Before any UI capture or terminal recording, the agent:
 
 If a project is missing a license, the skill will propose adding an **MIT License**. This ensures your project is open-source compliant and ready for the community.
 
+## 🛡️ Privacy-First Security Scan (`/scan`)
+
+The skill includes a dedicated security scanner (`scripts/scan.py`) that you can trigger using the `/scan` command. This tool:
+- **Detects Hardcoded Secrets**: Scans for 10+ common secret patterns (OpenAI, Anthropic, Google, AWS, Stripe, etc.).
+- **Validates .gitignore**: Ensures sensitive files like `.env`, `secrets.toml`, and `.streamlit/secrets.toml` are correctly ignored.
+- **Prevents Leaks**: Warns you before you showcase your project if any potential security risks are found.
+
 ## 🩺 Repo Health Score
 
 The skill assigns a **Repo Health Score** (0-100) based on:

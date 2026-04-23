@@ -41,6 +41,7 @@ nav:
   - Scripts & Tools:
     - Overview: scripts/overview.md
     - UI Capture: scripts/capture.md
+    - Security Scan: scripts/scan.md
     - CLI Recording: scripts/vhs.md
   - Guides:
     - README Customization: guides/readme-customization.md

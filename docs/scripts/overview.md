@@ -5,6 +5,7 @@ The Project Showcase Skill is powered by a set of specialized Python and Shell s
 ## Core Scripts
 
 - **`scripts/capture.py`**: The heart of the skill. Handles Playwright-based browser automation to capture screenshots and videos of web applications.
+- **`scripts/scan.py`**: A privacy-first security scanner that detects hardcoded secrets and validates `.gitignore` before any assets are captured.
 - **`scripts/manage_metadata.py`**: Manages the metadata and configuration for the showcase, ensuring consistent naming and tagging.
 - **`scripts/setup.sh`**: A comprehensive setup script that installs system dependencies (like VHS and FFmpeg) and Python packages.
 - **`scripts/record_cli.tape`**: A template for VHS recordings, defining how the terminal "types" out commands for the GIF demo.
