@@ -73,19 +73,3 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 *Built with ❤️ for Vibe Coders everywhere. Stop documenting. Start showcasing.*
-Security** | Secret Scan & .gitignore | ✅ Secure | 15 / 15 |
-| **Automation** | setup.sh & Passing Tests | ✅ Working | 20 / 20 |
-| **Showcase** | High-res Assets & VHS | ✅ Verified | 20 / 20 |
-| **Distribution** | Live App & Official Release | ✅ Distributed | 30 / 30 |
-
-## 🛠️ Tech Stack
-- **Engine**: Python 3.x, Playwright (Browser Automation)
-- **Terminal**: VHS (CLI Scripting)
-- **Agent Protocol**: Universal Skill Schema (Gemini, Claude, Generic)
-- **Design**: Shields.io for modern CTA badges
-
-## 📜 License
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-*Built with ❤️ for Vibe Coders everywhere. Stop documenting. Start showcasing.*
