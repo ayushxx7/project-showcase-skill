@@ -1,14 +1,14 @@
 # Project Showcase Skill 🎬✨
 **The Magic Pill for Shipping Professional Project Showcases**
 
+[![Live App](https://img.shields.io/badge/Live_App-Try_Live_Now-blue?style=for-the-badge&logo=vercel)](https://github.com/ayushxx7/project-showcase-skill)
+[![CLI Demo](https://img.shields.io/badge/CLI_Demo-View_Demo-green?style=for-the-badge&logo=asciinema)](showcase/cli_power_demo.gif)
+
 [![Tested on Gemini](https://img.shields.io/badge/Tested_on-Gemini_CLI-8E44AD?style=for-the-badge&logo=google-gemini&logoColor=white)](https://github.com/google/gemini-cli)
 [![Works on Claude](https://img.shields.io/badge/Works_on-Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://github.com/anthropic/claude-code)
 [![Documentation Status](https://img.shields.io/badge/Docs-Read_The_Docs-blue?style=for-the-badge&logo=read-the-docs&logoColor=white)](https://project-showcase-skill.readthedocs.io/)
 [![Universal Agent Support](https://img.shields.io/badge/Support-Universal_Agents-green?style=for-the-badge)](https://github.com/ayushxx7/project-showcase-skill)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-[![Live App](https://img.shields.io/badge/Live_App-Click_Here_to_Explore-blue?style=for-the-badge&logo=vercel)](https://github.com/ayushxx7/project-showcase-skill)
-[![CLI Demo](https://img.shields.io/badge/CLI_Demo-View_Terminal_Recording-green?style=for-the-badge&logo=asciinema)](showcase/cli_power_demo.gif)
 
 **Project Showcase Skill** is the "magic pill" for developers who hate documentation but love showing off. Automate the "last mile" of your workflow—generating high-fidelity visual galleries and surgical README updates in seconds.
 

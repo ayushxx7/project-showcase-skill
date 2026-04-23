@@ -8,8 +8,8 @@ Use these structures to build high-quality project galleries and feature breakdo
 
 ### Structure:
 1. **Hero Header**: "✨ Project Name ✨ 🎬🤖"
-   - **Primary CTA**: Place a "Live App" badge at the very top for immediate engagement.
-   - Example: `[![Live App](https://img.shields.io/badge/Live_App-Click_Here_to_Explore-blue?style=for-the-badge&logo=vercel)](https://your-app-url.com)`
+   - **Primary CTA**: Place a "Live App" badge at the very top of the Hero section (just below the title/description) to ensure it's the first thing users see.
+   - Example: `[![Live App](https://img.shields.io/badge/Live_App-Try_Live_Now-blue?style=for-the-badge&logo=vercel)](https://your-app-url.com)`
 2. **Elevator Pitch**: A 2-3 sentence overview of the core value.
 3. **Visual Gallery (Top Fold)**: A clean table with high-res screenshots and a high-impact `demo.gif`.
    - Example: `![Demo Workflow](showcase/demo.gif)`

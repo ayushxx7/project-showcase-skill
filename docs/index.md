@@ -2,6 +2,8 @@
 
 **The Magic Pill for Shipping Professional Project Showcases**
 
+[![Live App](https://img.shields.io/badge/Live_App-Try_Live_Now-blue?style=for-the-badge&logo=vercel)](https://github.com/ayushxx7/project-showcase-skill)
+
 Project Showcase Skill is the "magic pill" for developers who hate documentation but love showing off. Automate the "last mile" of your workflow—generating high-fidelity visual galleries and surgical README updates in seconds.
 
 ## 🎬 Showcase Gallery

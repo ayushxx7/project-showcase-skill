@@ -21,7 +21,7 @@ This skill automates the "last mile" of development: showcasing your work to the
 ### 3. README Documentation & Hygiene
 - **Vibe-First README**: Prioritizes "Showing" over "Telling."
 - **Surgical Injection**: Injects visual galleries without overwriting your manual notes.
-- **UX Audit**: Adds high-conversion badges (e.g., "Live App").
+- **UX Audit**: Automatically places high-conversion badges (e.g., "Live App") at the very top of the Hero section.
 - **Deduplication**: Ensures sections like "Features" or "Installation" are not duplicated.
 
 ### 4. Repo Health & Healing (Audit & Fix)
