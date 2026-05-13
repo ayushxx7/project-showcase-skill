@@ -1,6 +1,1 @@
-playwright
-asyncio
-argparse
-toml
-pytest
-mkdocs-material
+playwright>=1.40.0

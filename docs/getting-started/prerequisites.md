@@ -1,27 +1,24 @@
-# Prerequisites 🛠️
+# Prerequisites
 
-To use the Project Showcase Skill, you'll need a few dependencies installed. The skill can usually set these up for you automatically, but here's the manual checklist.
+## Required
 
-## Web Recording (Playwright)
-The skill uses [Playwright](https://playwright.dev/python/) for automated browser captures.
+| Tool | Purpose | Install |
+|---|---|---|
+| Python 3.8+ | Scripts runtime | [python.org](https://www.python.org/) |
+| Playwright | UI capture | `pip install playwright && playwright install chromium` |
+| ffmpeg | Video/GIF processing | `brew install ffmpeg` (macOS) |
 
-- **Requirement**: Python 3.7+
-- **Install**:
-  ```bash
-  pip install playwright
-  playwright install chromium
-  ```
+## Optional
 
-## Terminal Recording (VHS)
-Terminal recording is powered by [VHS](https://github.com/charmbracelet/vhs) from Charmbracelet.
+| Tool | Purpose | Install |
+|---|---|---|
+| VHS | Terminal GIF recording | `brew install vhs` (macOS) |
+| GitHub CLI (`gh`) | Releases, metadata | [cli.github.com](https://cli.github.com/) |
+| MkDocs Material | Local docs site | `pip install mkdocs-material` |
 
-- **Platform**: macOS/Linux (optimized for Unix-like environments).
-- **Install (macOS)**:
-  ```bash
-  brew install vhs
-  ```
-- **Install (Linux)**: Follow the [VHS installation guide](https://github.com/charmbracelet/vhs#installation).
+## Run the Docs Site Locally
 
-## Other Tools
-- **FFmpeg**: Required by Playwright and VHS for video/GIF processing.
-- **GitHub CLI (`gh`)**: Optional but recommended for automated metadata fetching and release creation.
+```bash
+pip install mkdocs-material
+mkdocs serve
+```

@@ -1,28 +1,50 @@
-# UI Capture (`capture.py`) 📸
+# UI Capture (`capture.py`)
 
-`capture.py` is a robust Python script leveraging [Playwright](https://playwright.dev/python/) to automate the process of capturing high-quality visual assets from any web application.
+Playwright-based browser automation for high-quality screenshots and video.
 
-## Key Features
+## Features
 
-- **📱 Responsive Viewports**: Automatically captures Desktop (1920x1080), Tablet (768x1024), and Mobile (375x667) screenshots.
-- **🖼️ Full-Page Stitches**: Intelligently scrolls and stitches the entire page for long landing pages.
-- **🎭 Visual Privacy**: Automatically detects and masks/blurs sensitive data (like API keys or emails) even if selectors aren't explicitly provided.
-- **🌙 Theme Switching**: If supported by the app, it can trigger dark/light mode for comparative captures.
-- **⚡ Hydration Awareness**: Waits for `networkidle` and specific selectors to ensure the UI is fully loaded.
-- **🔧 Auto-Fix & Retry**: If the initial capture fails (e.g., 404 or blank screen), the script diagnoses issues like port mismatches and retries with optimized settings.
-- **🎥 Video Recording**: Optionally records a `.webm` video of interactions (scrolling, clicking).
+- **Responsive viewports**: Desktop (1920x1080), Tablet (768x1024), Mobile (375x667)
+- **Full-page screenshots**: Scroll and capture entire pages
+- **Visual masking**: Hide sensitive elements via CSS selectors
+- **Dark mode**: Capture in light or dark theme
+- **Video recording**: `.webm` output converted to optimized GIF
+- **Hydration awareness**: Waits for `networkidle` and framework selectors (React, Streamlit)
+- **Interaction flows**: Click, fill, hover sequences with per-step screenshots
 
 ## Usage
 
-The script is typically invoked by the agent, but can be run manually:
-
 ```bash
-python3 scripts/capture.py --url http://localhost:3000 --output showcase/landing.png
+# Basic landing page capture
+python3 scripts/capture.py --url http://localhost:3000
+
+# Responsive (desktop + tablet + mobile)
+python3 scripts/capture.py --url http://localhost:3000 --responsive
+
+# With video recording
+python3 scripts/capture.py --url http://localhost:3000 --record-video
+
+# Dark mode + full page
+python3 scripts/capture.py --url http://localhost:3000 --theme dark --full-page
+
+# Mask sensitive elements
+python3 scripts/capture.py --url http://localhost:3000 --mask ".api-key,.user-email"
+
+# Custom interactions (JSON)
+python3 scripts/capture.py --url http://localhost:3000 --interactions '[{"action":"fill","selector":"#search","value":"test","filename":"search.png"}]'
 ```
 
-### Common Arguments
-- `--url`: The target application URL.
-- `--output`: The destination path for the screenshot.
-- `--mask`: A comma-separated list of CSS selectors to hide.
-- `--full-page`: Boolean flag to capture the entire scrollable area.
-- `--mobile`: Boolean flag to simulate a mobile device.
+## Options
+
+| Flag | Default | Description |
+|---|---|---|
+| `--url` | `http://localhost:8501` | Target URL |
+| `--dir` | `showcase` | Output directory |
+| `--responsive` | off | Capture all 3 viewports |
+| `--full-page` | off | Full scrollable page |
+| `--theme` | `light` | `light` or `dark` |
+| `--mask` | — | Comma-separated CSS selectors to hide |
+| `--record-video` | off | Record .webm + convert to GIF |
+| `--interactions` | — | JSON interaction sequence |
+| `--hydration-delay` | 5 | Seconds to wait for UI hydration |
+| `--ab-mode` | off | A/B comparison capture |

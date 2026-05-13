@@ -1,29 +1,34 @@
-# Security & Privacy 🛡️
+# Security & Privacy
 
-Security is a top priority for the Project Showcase Skill. Before any capture or documentation update, the skill performs a several automated checks.
+## Secret Scanning
 
-## 🛡️ Secret Scan & Privacy Check
+Before any capture or publish, run the security scanner:
 
-Before any UI capture or terminal recording, the agent:
-1. **Scans for API Keys**: Searches for OpenAI, Anthropic, AWS, and other common key patterns in the source code.
-2. **Visual Privacy**: During UI capture, the agent ensures no sensitive keys are visible in the rendered UI. If detected, the agent autonomously blurs or masks them before saving the screenshot to prevent accidental leaks in the showcase.
-3. **Masking Sensitive UI**: The `capture.py` script can be configured with CSS selectors to hide specific elements (like API key fields or email addresses) before taking screenshots.
+```bash
+python3 scripts/scan.py --dir /path/to/project
+```
 
-## 📜 MIT License by Default
+This prevents:
+- Hardcoded API keys in source code
+- `.env` files committed to git
+- Secrets visible in UI screenshots
 
-If a project is missing a license, the skill will propose adding an **MIT License**. This ensures your project is open-source compliant and ready for the community.
+## Visual Masking
 
-## 🛡️ Privacy-First Security Scan (`/scan`)
+If your UI displays sensitive data (emails, API keys, personal info), use masking:
 
-The skill includes a dedicated security scanner (`scripts/scan.py`) that you can trigger using the `/scan` command. This tool:
-- **Detects Hardcoded Secrets**: Scans for 10+ common secret patterns (OpenAI, Anthropic, Google, AWS, Stripe, etc.).
-- **Validates .gitignore**: Ensures sensitive files like `.env`, `secrets.toml`, and `.streamlit/secrets.toml` are correctly ignored.
-- **Prevents Leaks**: Warns you before you showcase your project if any potential security risks are found.
+```bash
+python3 scripts/capture.py --url http://localhost:3000 --mask ".api-key,.user-email,#secret-field"
+```
 
-## 🩺 Repo Health Score
+This hides matching elements via `visibility: hidden` before taking screenshots.
 
-The skill assigns a **Repo Health Score** (0-100) based on:
-- **Documentation**: Presence of README and LICENSE.
-- **Security**: Secret scan results.
-- **Visuals**: High-res screenshots and terminal recordings.
-- **Distribution**: Presence of "Live App" links and GitHub metadata.
+## License
+
+If a project is missing a license, the skill proposes MIT. This ensures open-source compliance.
+
+## Health Score
+
+The audit (`scripts/audit.py`) assigns a security score based on:
+- No hardcoded secrets detected
+- `.gitignore` covers `.env`, `secrets.toml`, `node_modules`, `__pycache__`

@@ -1,113 +1,84 @@
 ---
 name: project-showcase
-description: "Automate the creation of high-quality project showcases, including UI captures using Playwright, professional README galleries, and feature summaries for portfolios or social media."
+description: "Automate the creation of high-quality project showcases: UI captures, security scans, repo health audits, README injection, GitHub releases, and social media launches."
 ---
 
 # Project Showcase Skill
 
-This skill automates the "last mile" of development: showcasing your work to the world. It identifies key UI components, captures them automatically, and generates professional documentation.
+Automates the "last mile" of development — capturing visuals, auditing health, injecting professional READMEs, and shipping.
 
 ## Commands
-- `/showcase`: **The Magic Pill** (Default). Runs UI Capture + Terminal Record + README Update + GitHub Release + Metadata (About/Labels).
-- `/select`: Opens an interactive UI to select specific features to run.
-- `/capture`: Trigger high-fidelity UI captures using Playwright.
-- `/record`: Record a terminal demo using VHS.
-- `/audit`: Perform a Repo Health Audit (Scoring & Healing Plan).
-- `/readme`: Surgically update the README with visual galleries and badges.
-- `/release`: Create an official GitHub Release (v0.1.0-alpha).
-- `/metadata`: Auto-detect and update GitHub "About" and "Topics".
-- `/socials`: Generate ready-to-post content for LinkedIn and Reddit.
-- `/scan`: Run a privacy-first security scan for secrets and `.env` leaks.
-- `/license`: Verify or add an MIT License.
-- `/setup`: Ensure all dependencies (Playwright, VHS, ffmpeg) are installed.
 
-## Core Workflows
-### 1. Initial Analysis & Auto-Setup
-- **Goal**: Identify project type and ensure the environment is ready.
-- **Autonomous Asset Generation**:
-    - If UI captures or Terminal recordings are missing, the agent **MUST NOT** skip them or leave broken links.
-    - **Step 1**: Attempt real capture via Playwright/VHS.
-    - **Step 2**: If Step 1 fails, generate a high-fidelity "Visual Architecture" diagram or a stylized SVG that represents the project's logic.
-    - **Outcome**: Every showcased repo MUST have a visual element, real or generated.
-- **Framework Detection & Secret Management**:
-    - **Streamlit Projects**: Detect via `streamlit_app.py` or `streamlit` in `requirements.txt`.
-    - **Secret Migration**: If detected, propose migrating `.env` keys to `.streamlit/secrets.toml` to align with Streamlit Cloud standards.
-- **Security & Privacy Scan (`/scan`)**:
-    - Before any capture, the agent should scan the project for common API key patterns (OpenAI, Anthropic, Google, AWS, etc.).
-    - If secrets are found in the source code or `.env` files, the agent should warn the user and propose adding them to `.gitignore`.
-- **License Verification (`/license`)**:
-    - Check if the project has a `LICENSE` file. If missing, propose adding an MIT License.
-- **Dependency Check (`/setup`)**:
-    - Before any capture, the agent should check if `playwright` (Python), `vhs` (System), and `ffmpeg` are installed.
+| Command | Script | Description |
+|---|---|---|
+| `/showcase` | (all) | Full pipeline: scan → capture → audit → readme → release → metadata |
+| `/capture` | `scripts/capture.py` | UI screenshots via Playwright |
+| `/scan` | `scripts/scan.py` | Security scan for secrets |
+| `/audit` | `scripts/audit.py` | Repo health score (0-100) + healing plan |
+| `/readme` | `scripts/inject_readme.py` | Surgical README gallery injection |
+| `/release` | `scripts/release.py` | GitHub release with auto-changelog |
+| `/metadata` | `scripts/manage_metadata.py` | GitHub topics + description |
+| `/setup` | `scripts/setup.sh` | Install dependencies |
+| `/socials` | `linkedin-magic/` | LinkedIn post generation + asset bundling |
 
-### 2. Automated Capture (`/capture`, `/record`)
-- **UI Capture**: Uses `scripts/capture.py`. Supports responsive, full-page, masking, and dark mode.
-- **Terminal Record**: Uses `scripts/record_cli.tape` and VHS.
-- **Verification & Auto-Fix**:
-    - After capture, inspect the generated assets. 
-    - **Failure Detection**: Look for 404 pages, blank screens, or `vhs` parser errors.
-- **Cleanup**:
-    - Once the showcase is verified and the README is updated, delete all temporary files.
-    - Ensure only the final high-quality assets (e.g., `landing.png`, `demo.gif`) remain in the `showcase/` folder.
+## Workflows
 
-### 3. README Documentation & Hygiene (`/readme`)
-- **Goal**: Build a professional README that "Shows first, tells second."
-- **Read the Docs (Optional / Non-UI Focus)**:
-    - **Detection**: If the project is a CLI tool, library, or back-end API (non-UI), the agent SHOULD suggest setting up "Read the Docs" using MkDocs.
-    - **Action**: Propose creating a basic `mkdocs.yml` and `docs/` structure.
-    - **User Choice**: Always ask: *"Since this is a [CLI/Library], would you like me to set up a 'Read the Docs' style documentation site as well?"*
-- **Asset Integrity**: 
-    - **NEVER** include broken image links or placeholders (like `landing.png` if it doesn't exist). 
-    - If a real capture is impossible, the agent **MUST** generate a high-fidelity alternative (e.g., a Mermaid diagram).
-- **The "Vibe-First" README**:
-    - **No Metadata Bloat**: Remove the diagnostic health table and the checkmark/percentage lines (e.g., `✅ Secure | ✅ 92/100`). These feel robotic and cluttered.
-    - **Natural Context Sentence**: Instead of keywords, generate a single, high-signal sentence that naturally blends the project's essence, tech stack, and purpose. 
-        - *Example*: "A privacy-first AI agent built with React and TypeScript for automated UI auditing."
-        - *Rule*: This sentence should feel like a human-written subtitle, not an audit report.
-    - **External Health Audit**: All detailed scoring, health tables, and diagnostic data MUST be moved to a dedicated external repository/file (e.g., `ayush-repos-health`) or kept at the very bottom of a separate `REPO_HEALTH.md`. The main README remains focused strictly on the product and the "Vibe".
-- **Surgical Injection & Deduplication**:
-    - **Never Duplicate**: If a section already exists (e.g., "Architecture", "Features", "Installation"), the agent **MUST NOT** add a second version.
-    - **Superiority Choice**: Compare existing content with generated content. If the generated version is better (clearer, more visual), **replace** the old one.
-    - **Hybrid Merge**: If both contain unique value, merge them into a single cohesive section.
-    - **Zero Redundancy**: A single, streamlined source of truth for every project aspect. No redundant headers.
-- **Top Fold Placement**: Always aim to place the Visual Gallery immediately after the elevator pitch to maximize initial impact.
-- **Agentic Badges**: 
-    - **"Tested on Gemini CLI"**: This badge MUST ONLY be applied to agentic projects (e.g., Skills, MCP Servers, Agent-specific tools). 
-    - **DO NOT** add this badge to general web apps, CLIs, or libraries that are not specifically built for or tested as AI agent extensions.
+### 1. Security First (`/scan`)
+Before any capture, scan for secrets:
+```bash
+python3 scripts/scan.py --dir /path/to/project
+```
+If secrets found → warn user, propose `.gitignore` fixes, halt capture.
 
-### 4. Professional Delivery & Release (`/release`, `/metadata`)
-- **Goal**: Package the project for official distribution.
-- **Professional GitHub Release (`/release`)**:
-    - Create an automated **Release (e.g., v0.1.0-alpha/beta/stable)** upon completion of the showcase.
-- **GitHub Metadata (`/metadata`)**:
-    - Detect and update the "About" description and "Topics" (labels) using `scripts/manage_metadata.py`.
-- **Verification & Validation**:
-    - **Live Repository Audit**: 
-        - Before finalizing, visually confirm that the **README**, **Badges**, **Visual Gallery**, and **GitHub Topics** are rendered correctly.
-    - **Clean State**: If a force-push was required to clean secrets, ensure the release is re-associated with the latest clean commit hash.
+### 2. Capture (`/capture`)
+```bash
+python3 scripts/capture.py --url http://localhost:3000 --responsive --record-video
+```
+- Waits for `networkidle` + framework hydration
+- Supports masking (`--mask ".api-key"`), dark mode, A/B mode
+- Outputs to `showcase/` directory
 
-### 5. Repo Health & Healing (`/audit`)
-- **Goal**: Diagnose the project's "Readiness" and offer surgical improvements.
-- **Scoring**: Assign a weighted score on a **0-100 Scale**.
-- **Checklist Items**:
-    - Documentation (README, LICENSE).
-    - Security (Secrets, `.gitignore`).
-    - Automation (`setup.sh`, Tests).
-    - Showcase (Screenshots, VHS).
-    - **Bonus (+5 pts)**: Extended Documentation (MkDocs/Read the Docs) - *Especially recommended for non-UI apps*.
-- **Thoughtful Prescription**: Before fixing, the agent should present a **"Healing Plan"**.
-- **The Heal**: Only after user approval, apply the fixes surgically and re-audit to show the improved score.
+### 3. Audit (`/audit`)
+```bash
+python3 scripts/audit.py --dir /path/to/project --heal
+```
+Scores 5 categories (Documentation, Security, Automation, Showcase, Distribution) on 0-100 scale. `--heal` shows prioritized fix plan.
 
-### 6. Social Media & PR (`/socials`)
-- **Goal**: Summarize the project for external communication.
-- **Formats**:
-    - **LinkedIn**: Professional, value-driven, and badge-focused.
-    - **Reddit**: Technical, developer-to-developer, and GIF-centric.
+### 4. README Injection (`/readme`)
+```bash
+python3 scripts/inject_readme.py --readme README.md --gallery "## 🎬 Showcase Gallery\n![Demo](showcase/demo.gif)"
+```
+- Replaces existing gallery or inserts before first `##` section
+- Never duplicates, always backs up first
+- Moves health tables to `REPO_HEALTH.md` (not main README)
+
+### 5. Release (`/release`)
+```bash
+python3 scripts/release.py --version v1.0.0
+```
+Auto-generates changelog from conventional commits. Supports `--prerelease` and `--dry-run`.
+
+### 6. Metadata (`/metadata`)
+```bash
+python3 scripts/manage_metadata.py --apply
+```
+Auto-detects topics from file patterns, extracts description from README, applies via `gh repo edit`.
 
 ## Best Practices
-- **Wait for Load**: Always include `page.wait_for_selector()` or `time.sleep()` to ensure charts and LLM responses are rendered.
-- **Verified Quality**: Run `python3 tests/test_readme_injection.py` to confirm the injection logic is still sound.
-- **Documentation Hygiene**: Never sacrifice README beauty for diagnostic data. Keep the README for the "Vibe" and move the "Audit" to `REPO_HEALTH.md`.
+
+- **Vibe-first README**: No diagnostic tables in main README. Health data goes in `REPO_HEALTH.md`.
+- **Badge discipline**: "Tested on Gemini CLI" only for agentic projects. "Live App" only if deployed.
+- **Wait for hydration**: Always use `networkidle` + selector waits before capturing.
+- **Mask by default**: Use `--mask` for any UI showing emails, keys, or personal data.
+- **Idempotent**: All scripts are safe to re-run. Injection won't duplicate. Audit won't break.
+
+## Sub-Skills
+
+- **LinkedIn Magic** (`linkedin-magic/SKILL.md`): Post templates, asset bundling, hashtag strategy.
+
+## Docs
+
+Full documentation: https://project-showcase-skill.readthedocs.io/
 
 ---
-*Built with ❤️ for Vibe Coders everywhere.*
+*Built for Vibe Coders everywhere.*

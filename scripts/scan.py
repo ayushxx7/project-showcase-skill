@@ -5,12 +5,12 @@ import argparse
 # Common patterns for secrets
 SECRET_PATTERNS = {
     "OpenAI Key": r"sk-[a-zA-Z0-9]{48}",
-    "Anthropic Key": r"sk-ant-api03-[a-zA-Z0-9_-]{93}A",
+    "Anthropic Key": r"sk-ant-[a-zA-Z0-9_-]{93}",
     "Generic API Key": r"(?:api|secret|key|password)[-_ ]?[\'\"]?[:=][\'\"]?\s*([a-zA-Z0-9]{16,})[\'\"]?",
     "AWS Access Key": r"AKIA[0-9A-Z]{16}",
     "AWS Secret Key": r"(?i)aws_secret_access_key\s*[:=]\s*([a-zA-Z0-9/+=]{40})",
     "Google API Key": r"AIza[0-9A-Za-z-_]{35}",
-    "Firebase API Key": r"AIza[0-9A-Za-z-_]{35}",
+    "Firebase URL": r"[a-zA-Z0-9-]+\.firebaseapp\.com",
     "Stripe Secret Key": r"sk_live_[0-9a-zA-Z]{24}",
     "Stripe Publishable Key": r"pk_live_[0-9a-zA-Z]{24}",
     "GitHub Personal Access Token": r"ghp_[a-zA-Z0-9]{36}",

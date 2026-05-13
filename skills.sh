@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Project Showcase Skill - Universal Installer
-# Targets: Gemini CLI, Claude Code, Cursor
+# Targets: Gemini CLI, Claude Code, Cursor, Hermes Agent
 
 REPO_URL="https://github.com/ayushxx7/project-showcase-skill"
 SKILL_NAME="project-showcase"
@@ -20,7 +20,13 @@ if [ -d "$HOME/.claude/skills" ]; then
     cd "$HOME/.claude/skills" && git clone $REPO_URL $SKILL_NAME 2>/dev/null || (cd $SKILL_NAME && git pull)
 fi
 
-# 3. Detect Generic Agents folder
+# 3. Detect Hermes Agent
+if [ -d "$HOME/.hermes/profiles/vibecoder/skills" ]; then
+    echo "🦉 Hermes Agent detected. Installing..."
+    cd "$HOME/.hermes/profiles/vibecoder/skills" && git clone $REPO_URL $SKILL_NAME 2>/dev/null || (cd $SKILL_NAME && git pull)
+fi
+
+# 4. Detect Generic Agents folder
 if [ -d "$HOME/.agents/skills" ]; then
     echo "🕵️ Generic Agent Skills folder detected. Installing..."
     cd "$HOME/.agents/skills" && git clone $REPO_URL $SKILL_NAME 2>/dev/null || (cd $SKILL_NAME && git pull)

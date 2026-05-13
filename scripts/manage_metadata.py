@@ -79,6 +79,13 @@ def detect_description():
     return None
 
 def update_gh_metadata(topics=None, description=None, commit=False, push=False):
+    # Verify we're in a git repo
+    try:
+        subprocess.run(["git", "rev-parse", "--git-dir"], check=True, capture_output=True)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        print("⚠️ Not a git repository or git not found. Skipping GitHub metadata update.")
+        return
+    
     try:
         # Check if gh is installed and logged in
         subprocess.run(["gh", "auth", "status"], check=True, capture_output=True)

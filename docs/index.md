@@ -1,39 +1,54 @@
-# Project Showcase Skill 🎬✨
+# Project Showcase Skill
 
-**The Magic Pill for Shipping Professional Project Showcases**
+**Automate the "last mile" of development** — generate visual galleries, audit repo health, inject professional READMEs, and launch on social media.
 
-[![Live App](https://img.shields.io/badge/Live_App-Try_Live_Now-blue?style=for-the-badge&logo=vercel)](https://github.com/ayushxx7/project-showcase-skill)
+## What It Does
 
-Project Showcase Skill is the "magic pill" for developers who hate documentation but love showing off. Automate the "last mile" of your workflow—generating high-fidelity visual galleries and surgical README updates in seconds.
+| Script | Purpose |
+|---|---|
+| `scripts/capture.py` | Playwright-based UI screenshots (desktop, tablet, mobile) |
+| `scripts/scan.py` | Security scan for hardcoded secrets and .env leaks |
+| `scripts/audit.py` | Repo health scoring (0-100) with healing plan |
+| `scripts/inject_readme.py` | Surgical README gallery injection |
+| `scripts/release.py` | GitHub release creation with auto-changelog |
+| `scripts/manage_metadata.py` | Auto-detect and update GitHub topics/description |
+| `scripts/setup.sh` | One-shot dependency installer |
 
-## 🎬 Showcase Gallery
+## Quick Start
 
-| 🎬 Web Showcase | 📟 CLI Power Demo (GIF) |
-| :---: | :---: |
-| ![Landing](https://raw.githubusercontent.com/ayushxx7/project-showcase-skill/main/showcase/landing.png) | ![CLI Demo](https://raw.githubusercontent.com/ayushxx7/project-showcase-skill/main/showcase/cli_power_demo.gif) |
+```bash
+# 1. Install the skill
+curl -sSL https://raw.githubusercontent.com/ayushxx7/project-showcase-skill/main/skills.sh | bash
 
-## ✨ The Magic Features
+# 2. Setup dependencies
+./scripts/setup.sh
 
-### 🎬 Professional UI Capture
-- **📱 Responsive Ready**: Desktop, Tablet, and Mobile viewports in one go.
-- **🖼️ Full-Page Screenshots**: Automatically scroll and stitch the entire page.
-- **🎭 Visual Privacy**: Mask sensitive data (like API keys or emails).
-- **🌙 Dark Mode Support**: Capture your UI in both light and dark themes.
+# 3. Run a health audit
+python3 scripts/audit.py --dir /path/to/your/project --heal
 
-### 📟 Terminal Recording (VHS)
-- **VHS Integration**: Scripted terminal sessions that "type" themselves into high-fidelity GIFs.
-- **Zero Effort**: Just tell the agent what commands to run.
+# 4. Capture UI
+python3 scripts/capture.py --url http://localhost:3000 --responsive
 
-### 🛡️ Dev-First README Injection
-- **Smart License Verification**: Automatically detects missing licenses.
-- **Preserve & Merge**: It identifies manual documentation and injects visuals around it.
-- **UX Audit**: Automatically places high-conversion "Live App" badges.
+# 5. Scan for secrets
+python3 scripts/scan.py --dir /path/to/your/project
+```
 
-## 🛠️ Tech Stack
-- **Engine**: Python 3.x, Playwright (Browser Automation)
-- **Terminal**: VHS (CLI Scripting)
-- **Agent Protocol**: Universal Skill Schema (Gemini, Claude, Generic)
-- **Design**: Shields.io for modern CTA badges
+## Agent Commands
 
----
-*Built with ❤️ for Vibe Coders everywhere. Stop documenting. Start showcasing.*
+When installed as a skill, tell your agent:
+
+- *"Showcase this project"* — Full pipeline: capture + audit + README + release
+- *"Audit this project"* — Health score + healing plan
+- *"Capture the UI"* — Screenshots across viewports
+- *"Scan for secrets"* — Pre-publish security check
+- *"Update the README"* — Surgical gallery injection
+- *"Create a release"* — GitHub release with changelog
+- *"Launch on LinkedIn"* — Post templates + asset bundling
+
+## Sub-Skills
+
+- **LinkedIn Magic** (`linkedin-magic/`) — Post templates, asset bundling, hashtag strategy
+
+## License
+
+MIT — see [LICENSE](../LICENSE)

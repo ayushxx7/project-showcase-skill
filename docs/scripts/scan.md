@@ -1,26 +1,30 @@
-# Security Scan (`scan.py`) 🛡️
+# Security Scan (`scan.py`)
 
-`scan.py` is a privacy-first security scanner designed to prevent accidental leaks of sensitive information before a project is showcased.
+Prevents accidental secret leaks before publishing.
 
-## Key Features
+## Features
 
-- **🔍 Pattern Matching**: Detects 10+ common hardcoded secrets, including OpenAI, Anthropic, Google, AWS, Stripe, and GitHub keys.
-- **🛡️ .gitignore Validation**: Verifies that critical files like `.env`, `secrets.toml`, and `.streamlit/secrets.toml` are listed in `.gitignore`.
-- **🚀 Pre-Capture Verification**: Integrated into the `/showcase` and `/capture` workflows to ensure a "Clean State" before screenshots are taken.
-- **✨ Safe Snippets**: When a secret is found, the script only shows the first and last few characters (e.g., `sk-a...b123`) to help you identify the leak without logging the full secret.
-- **✅ Readiness Scoring**: Contributes directly to the security component of the Repo Health Score.
+- Detects 10+ secret patterns: OpenAI, Anthropic, Google, AWS, Stripe, GitHub tokens
+- Validates `.gitignore` covers critical files (`.env`, `secrets.toml`, etc.)
+- Safe snippet display — only shows first/last 4 chars of found secrets
+- Exit code 1 on findings (CI-friendly)
 
 ## Usage
 
-The script is invoked automatically by the agent before any visual capture, but can be run manually:
-
 ```bash
 python3 scripts/scan.py
+python3 scripts/scan.py --dir /path/to/project
 ```
 
-### Options
-- `--dir`: The directory to scan (defaults to the current directory).
+## Detected Patterns
 
-## Why This Matters
-
-When showcasing a project, it's easy to accidentally include a `.env` file or a hardcoded key in a screenshot. `scan.py` acts as a "safety net," ensuring that your public showcase remains professional and secure.
+| Pattern | Example |
+|---|---|
+| OpenAI Key | `sk-...` (48 chars) |
+| Anthropic Key | `sk-ant-...` (93 chars) |
+| Google API Key | `AIza...` (35 chars) |
+| AWS Access Key | `AKIA...` (16 chars) |
+| Stripe Secret Key | `sk_live_...` (24 chars) |
+| GitHub PAT | `ghp_...` (36 chars) |
+| Firebase URL | `*.firebaseapp.com` |
+| Generic API Key | `api_key = "..."` |

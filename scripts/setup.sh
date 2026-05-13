@@ -3,6 +3,15 @@ set -e
 
 echo "🎬 Setting up Project Showcase dependencies..."
 
+# Check Python version (need 3.8+)
+PYTHON_VERSION=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")' 2>/dev/null || echo "0.0")
+REQUIRED="3.8"
+if [ "$(printf '%s\n' "$REQUIRED" "$PYTHON_VERSION" | sort -V | head -n1)" != "$REQUIRED" ]; then
+    echo "❌ Python 3.8+ required. Found: $PYTHON_VERSION"
+    exit 1
+fi
+echo "✅ Python $PYTHON_VERSION detected."
+
 # Detect OS
 OS="$(uname)"
 case "${OS}" in
@@ -35,9 +44,13 @@ echo "🐍 Setting up Python environment..."
 python3 -m venv .venv
 source .venv/bin/activate
 
-echo "pip install playwright..."
+echo "pip install dependencies..."
 python3 -m pip install --upgrade pip
-python3 -m pip install playwright
+if [ -f "requirements.txt" ]; then
+    python3 -m pip install -r requirements.txt
+else
+    python3 -m pip install playwright
+fi
 
 echo "Installing Playwright browsers..."
 python3 -m playwright install chromium

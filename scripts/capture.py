@@ -10,9 +10,9 @@ import sys
 
 # Standard viewports for responsive testing
 VIEWPORTS = {
-    "desktop": {"width": 1440, "height": 900},
+    "desktop": {"width": 1920, "height": 1080},
     "tablet": {"width": 768, "height": 1024},
-    "mobile": {"width": 375, "height": 812}
+    "mobile": {"width": 375, "height": 667}
 }
 
 def convert_video_to_gif(video_path, gif_path, trim_start=2):
@@ -21,8 +21,8 @@ def convert_video_to_gif(video_path, gif_path, trim_start=2):
     """
     print(f"🔄 Converting {video_path} to {gif_path} (Trimming {trim_start}s)...")
     try:
-        # ffmpeg command for high-quality GIF conversion with trimming
-        palette = "/tmp/palette.png"
+        # Use unique temp palette to avoid collisions with parallel runs
+        palette = os.path.join(os.path.dirname(gif_path), f".palette_{os.getpid()}.png")
         # -ss trim_start: The 'Clean Cut' to remove loading frames
         filters = "fps=15,scale=1080:-1:flags=lanczos"
         
@@ -49,6 +49,10 @@ def convert_video_to_gif(video_path, gif_path, trim_start=2):
         print("❌ Error: ffmpeg not found. Please install it to enable video-to-GIF conversion.")
     except subprocess.CalledProcessError as e:
         print(f"❌ Error during conversion: {e}")
+    finally:
+        # Clean up temp palette file
+        if os.path.exists(palette):
+            os.remove(palette)
 
 async def discover_selectors(page):
     """
@@ -141,6 +145,17 @@ async def capture_showcase(url, output_dir, interactions=None, record_video=Fals
                     page = await context.new_page()
                     await page.goto(url, wait_until="networkidle")
                     await wait_for_stability(page, 2) # Minimal delay for the new context
+                
+                # Protocol 3.5: Apply visual masks before screenshot
+                if mask_selectors:
+                    for sel in mask_selectors:
+                        try:
+                            await page.evaluate(
+                                f"document.querySelectorAll('{sel}').forEach(el => el.style.visibility = 'hidden')"
+                            )
+                            print(f"🎭 Masked: {sel}")
+                        except Exception as e:
+                            print(f"⚠️ Could not mask '{sel}': {e}")
                 
                 # Protocol 4: Interaction & Visual Audit
                 if interactions:

@@ -1,15 +1,16 @@
-# Scripts Overview 🛠️
+# Scripts Overview
 
-The Project Showcase Skill is powered by a set of specialized Python and Shell scripts that handle everything from environment setup to high-fidelity UI capture.
+The skill is powered by 6 Python scripts and 2 shell scripts:
 
-## Core Scripts
+| Script | Language | Purpose |
+|---|---|---|
+| `scripts/capture.py` | Python | Playwright UI screenshots |
+| `scripts/scan.py` | Python | Secret leak detection |
+| `scripts/audit.py` | Python | Repo health scoring |
+| `scripts/inject_readme.py` | Python | README gallery injection |
+| `scripts/release.py` | Python | GitHub release automation |
+| `scripts/manage_metadata.py` | Python | GitHub topics/description |
+| `scripts/setup.sh` | Bash | Dependency installer |
+| `skills.sh` | Bash | Universal skill installer |
 
-- **`scripts/capture.py`**: The heart of the skill. Handles Playwright-based browser automation to capture screenshots and videos of web applications.
-- **`scripts/scan.py`**: A privacy-first security scanner that detects hardcoded secrets and validates `.gitignore` before any assets are captured.
-- **`scripts/manage_metadata.py`**: Manages the metadata and configuration for the showcase, ensuring consistent naming and tagging.
-- **`scripts/setup.sh`**: A comprehensive setup script that installs system dependencies (like VHS and FFmpeg) and Python packages.
-- **`scripts/record_cli.tape`**: A template for VHS recordings, defining how the terminal "types" out commands for the GIF demo.
-
-## Helper Scripts
-- **`linkedin-magic/scripts/bundle_assets.py`**: A specialized tool for social media launches that selects and prepares the best assets for LinkedIn/Twitter.
-- **`skills.sh`**: The universal installer script used to add this skill to various AI agent environments.
+All Python scripts support `--help` for options.

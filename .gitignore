@@ -7,6 +7,7 @@ showcase/record_cli.tape
 
 # Virtual Environments
 .venv/
+.venv_capture/
 .showcase_venv/
 node_modules/
 .env
@@ -15,7 +16,22 @@ node_modules/
 .DS_Store
 __pycache__/
 *.pyc
+.pytest_cache/
 
 # Streamlit & Secrets
 secrets.toml
 .streamlit/secrets.toml
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# Temp files
+*.bak.*
+/tmp/
+
+# Leftover launch artifacts
+linkedin_launch/
+linkedin_launch_rag/
+showcase_assets/
