@@ -2,6 +2,12 @@
 
 **Automate the "last mile" of development** — visual galleries, security audits, README injection, and social media launches.
 
+## 🎬 Showcase Gallery
+
+| 📟 Demo GIF | 🩺 Health Audit | 🛡️ Security Scan |
+|:---:|:---:|:---:|
+| ![Demo](showcase/demo.gif) | ![Audit](showcase/audit_terminal.png) | ![Scan](showcase/scan_terminal.png) |
+
 ## Quick Start
 
 ```bash

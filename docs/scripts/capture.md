@@ -2,6 +2,12 @@
 
 Playwright-based browser automation for high-quality screenshots and video.
 
+## When to Use
+
+Use `capture.py` for **web applications** — React, Streamlit, Next.js, etc.
+
+For **CLI tools and skills**, use VHS terminal recording instead (see [CLI Recording](vhs.md)).
+
 ## Features
 
 - **Responsive viewports**: Desktop (1920x1080), Tablet (768x1024), Mobile (375x667)

@@ -12,7 +12,8 @@ Automates the "last mile" of development — capturing visuals, auditing health,
 | Command | Script | Description |
 |---|---|---|
 | `/showcase` | (all) | Full pipeline: scan → capture → audit → readme → release → metadata |
-| `/capture` | `scripts/capture.py` | UI screenshots via Playwright |
+| `/capture` | `scripts/capture.py` | UI screenshots via Playwright (web apps) |
+| `/record` | VHS + `.tape` | Terminal demo GIF (CLI tools, skills) |
 | `/scan` | `scripts/scan.py` | Security scan for secrets |
 | `/audit` | `scripts/audit.py` | Repo health score (0-100) + healing plan |
 | `/readme` | `scripts/inject_readme.py` | Surgical README gallery injection |
@@ -24,19 +25,33 @@ Automates the "last mile" of development — capturing visuals, auditing health,
 ## Workflows
 
 ### 1. Security First (`/scan`)
-Before any capture, scan for secrets:
 ```bash
 python3 scripts/scan.py --dir /path/to/project
 ```
 If secrets found → warn user, propose `.gitignore` fixes, halt capture.
 
 ### 2. Capture (`/capture`)
+
+**For web apps** — Playwright screenshots:
 ```bash
 python3 scripts/capture.py --url http://localhost:3000 --responsive --record-video
 ```
 - Waits for `networkidle` + framework hydration
 - Supports masking (`--mask ".api-key"`), dark mode, A/B mode
 - Outputs to `showcase/` directory
+
+**For CLI tools / skills** — VHS terminal recording:
+```bash
+vhs scripts/showcase_demo.tape
+```
+- Records real terminal output as GIF
+- Edit `.tape` file to customize the demo
+- Outputs to `showcase/demo.gif`
+
+**For non-web, non-CLI projects** — terminal screenshots:
+- Run key commands (audit, scan, etc.)
+- Capture output as PNG via Playwright HTML rendering
+- Never generate fake architecture diagrams
 
 ### 3. Audit (`/audit`)
 ```bash
@@ -66,6 +81,7 @@ Auto-detects topics from file patterns, extracts description from README, applie
 
 ## Best Practices
 
+- **Real captures only**: Never generate fake SVGs or architecture diagrams. If there's no web UI, use VHS terminal recordings or terminal screenshots of actual tool output.
 - **Vibe-first README**: No diagnostic tables in main README. Health data goes in `REPO_HEALTH.md`.
 - **Badge discipline**: "Tested on Gemini CLI" only for agentic projects. "Live App" only if deployed.
 - **Wait for hydration**: Always use `networkidle` + selector waits before capturing.

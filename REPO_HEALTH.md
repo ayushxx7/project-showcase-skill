@@ -1,11 +1,15 @@
-# Repo Health: 100 / 100 (Pristine)
+# Repo Health: 75 / 100 (Good) 🩺
 
-This project "eats its own dog food" and maintains a perfect readiness score.
+| Category | Score | Status |
+| :--- | :--- | :--- |
+| **Documentation** | 15 / 15 | ✅ README, LICENSE, install instructions |
+| **Security** | 15 / 15 | ✅ No secrets, clean .gitignore |
+| **Automation** | 15 / 20 | ⚠️ No CI/CD config |
+| **Showcase** | 20 / 20 | ✅ 3+ visual assets, VHS tapes, capture.py |
+| **Distribution** | 10 / 30 | ⚠️ No GitHub topics or releases yet |
 
-| Category | Item | Status | Score |
-| :--- | :--- | :--- | :--- |
-| **Documentation** | README, LICENSE, SKILL.md, Docs site | Complete | 15 / 15 |
-| **Security** | Secret Scan, .gitignore | Secure | 15 / 15 |
-| **Automation** | setup.sh, 6 Python scripts, passing tests | Working | 20 / 20 |
-| **Showcase** | High-res assets, VHS tape, capture.py | Verified | 20 / 20 |
-| **Distribution** | GitHub remote, topics, releases | Distributed | 30 / 30 |
+## Healing Plan
+
+1. Add GitHub Actions CI workflow (+5 pts)
+2. Set GitHub topics via `python3 scripts/manage_metadata.py --apply` (+10 pts)
+3. Create first release via `python3 scripts/release.py` (+10 pts)
