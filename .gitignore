@@ -35,3 +35,6 @@ build/
 linkedin_launch/
 linkedin_launch_rag/
 showcase_assets/
+
+# MkDocs build output
+site/
