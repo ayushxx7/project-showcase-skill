@@ -208,6 +208,20 @@ def check_showcase(directory):
     return score, findings
 
 
+def _gh_api_get(path, token):
+    """Make a GitHub API GET request. Returns (status_code, data)."""
+    import urllib.request
+    url = f"https://api.github.com{path}"
+    req = urllib.request.Request(url)
+    req.add_header("Authorization", f"token {token}")
+    req.add_header("Accept", "application/vnd.github.v3+json")
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return resp.status, json.loads(resp.read())
+    except Exception as e:
+        return 0, str(e)
+
+
 def check_distribution(directory):
     """GitHub metadata, topics, releases."""
     score = 0
@@ -221,53 +235,64 @@ def check_distribution(directory):
     score += 5
     findings.append(("✅", "Git repository initialized"))
 
-    # Check for remote
+    # Check for remote and extract owner/repo
+    remote_url = None
     try:
         result = subprocess.run(
             ["git", "remote", "get-url", "origin"],
             capture_output=True, text=True, cwd=directory, timeout=10
         )
         if result.returncode == 0 and result.stdout.strip():
+            remote_url = result.stdout.strip()
             score += 5
-            findings.append(("✅", f"Remote configured: {result.stdout.strip()}"))
+            findings.append(("✅", f"Remote configured: {remote_url}"))
         else:
             findings.append(("⚠️", "No remote configured"))
     except Exception:
         findings.append(("⚠️", "Could not check git remote"))
 
-    # Check for GitHub topics via gh
-    try:
-        result = subprocess.run(
-            ["gh", "repo", "view", "--json", "repositoryTopics"],
-            capture_output=True, text=True, cwd=directory, timeout=10
-        )
-        if result.returncode == 0:
-            data = json.loads(result.stdout)
-            topics = data.get("repositoryTopics", [])
-            topic_names = [t.get("name", "") for t in topics]
+    # Parse owner/repo from remote URL
+    owner_repo = None
+    if remote_url:
+        # Handle both HTTPS and SSH formats
+        # HTTPS: https://github.com/owner/repo.git
+        # SSH: git@github.com:owner/repo.git
+        for prefix in ["https://github.com/", "git@github.com:"]:
+            if prefix in remote_url:
+                owner_repo = remote_url.split(prefix)[-1].replace(".git", "")
+                break
+
+    # Try GitHub API for topics and releases
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
+    if owner_repo and token:
+        # Check topics
+        status, data = _gh_api_get(f"/repos/{owner_repo}/topics", token)
+        if status == 200:
+            topic_names = data.get("names", [])
             if topic_names:
                 score += 10
                 findings.append(("✅", f"GitHub topics: {', '.join(topic_names)}"))
             else:
-                findings.append(("⚠️", "No GitHub topics set"))
+                findings.append(("⚠️", "No GitHub topics set — run metadata.py --apply"))
         else:
-            findings.append(("⚠️", "Could not fetch GitHub topics (gh auth?)"))
-    except Exception:
-        findings.append(("⚠️", "gh CLI not available for topic check"))
+            findings.append(("⚠️", f"Could not fetch topics (API: {data})"))
 
-    # Check for releases
-    try:
-        result = subprocess.run(
-            ["gh", "release", "list", "--limit", "1"],
-            capture_output=True, text=True, cwd=directory, timeout=10
-        )
-        if result.returncode == 0 and result.stdout.strip():
-            score += 10
-            findings.append(("✅", "GitHub release exists"))
+        # Check releases
+        status, data = _gh_api_get(f"/repos/{owner_repo}/releases?per_page=1", token)
+        if status == 200:
+            releases = data if isinstance(data, list) else []
+            if releases:
+                score += 10
+                tag = releases[0].get("tag_name", "?")
+                findings.append(("✅", f"GitHub release exists: {tag}"))
+            else:
+                findings.append(("⚠️", "No GitHub releases yet — run release.py"))
         else:
-            findings.append(("⚠️", "No GitHub releases yet"))
-    except Exception:
-        findings.append(("⚠️", "Could not check releases"))
+            findings.append(("⚠️", f"Could not check releases (API: {data})"))
+    elif owner_repo:
+        findings.append(("⚠️", "Set GH_TOKEN env var to check topics/releases via API"))
+    else:
+        findings.append(("⚠️", "Could not parse owner/repo from remote URL"))
 
     return score, findings
 
